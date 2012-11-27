@@ -1,0 +1,7 @@
+# Tracing options for the tp4.diagram plug-in
+
+# Common issues
+tp4.diagram/debug=false
+
+# Visual IDs
+tp4.diagram/debug/visualID=false
