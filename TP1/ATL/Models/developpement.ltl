@@ -1,0 +1,1 @@
+op finished = Conception_finished /\ RedactionDoc_finished /\ Developpement_finished /\ RedactionTests_finished /\ ;
