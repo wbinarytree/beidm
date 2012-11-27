@@ -1,0 +1,30 @@
+Selt version 2.9.2 -- 05/02/08 -- LAAS/CNRS
+ktz loaded, 26 states, 47 transitions
+0.000s
+
+- op finished = Conception_finished /\ RedactionTests_finished /\ RedactionDoc_finished
+= /\ Developpement_finished;
+operator finished : prop
+0.000s
+
+- [] (finished => dead);
+TRUE
+0.000s
+
+- [] <> dead ;
+TRUE
+0.000s
+
+- [] (dead => finished);
+TRUE
+0.000s
+
+- - <> finished;
+FALSE
+  state 0: Conception_ready Developpement_ready RedactionDoc_ready RedactionTests_ready
+  -Conception_start ... (preserving T)->
+  state 8: L.dead Conception_finished Conception_hasStarted Developpement_finished Developpement_hasStarted RedactionDoc_finished RedactionDoc_hasStarted RedactionTests_finished RedactionTests_hasStarted
+  -deadlock ... (preserving Developpement_finished /\ RedactionDoc_finished /\ RedactionTests_finished /\ Conception_finished)->
+  state 9: L.dead Conception_finished Conception_hasStarted Developpement_finished Developpement_hasStarted RedactionDoc_finished RedactionDoc_hasStarted RedactionTests_finished RedactionTests_hasStarted
+  [accepting all]
+0.000s

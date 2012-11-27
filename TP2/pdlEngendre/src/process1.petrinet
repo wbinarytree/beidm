@@ -1,0 +1,24 @@
+petrinet pn1 {
+	place p1 {
+		marking 1
+	}
+	place p2 {
+		marking 0
+	}
+	transition t1 {
+		minTime 0
+		maxTime 1
+	}
+	arc a1 { 
+		source p1
+		target t1
+		type normal
+		weight 1
+	}
+	arc a2 {
+		source t1
+		target p2
+		type normal
+		weight 1
+	} 
+}
