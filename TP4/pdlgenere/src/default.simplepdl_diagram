@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:simplepdl="http://simplepdl" xmi:id="_QHhEkTihEeKQD9KgCuIpvA" type="SimplePDL" name="default.simplepdl_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_RCZYcDihEeKQD9KgCuIpvA" type="2001" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_RCbNoDihEeKQD9KgCuIpvA" type="5001"/>
+    <element xmi:type="simplepdl:WorkDefinition" href="default.simplepdl#//@processElements.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RCZYcTihEeKQD9KgCuIpvA" x="125" y="126"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_R33n4DihEeKQD9KgCuIpvA" type="2001" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_R34O8DihEeKQD9KgCuIpvA" type="5001"/>
+    <element xmi:type="simplepdl:WorkDefinition" href="default.simplepdl#//@processElements.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_R33n4TihEeKQD9KgCuIpvA" x="360" y="197"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_V2ojgDihEeKQD9KgCuIpvA" type="2002" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_V2pKkDihEeKQD9KgCuIpvA" type="5002"/>
+    <element xmi:type="simplepdl:Guidance" href="default.simplepdl#//@processElements.3"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V2ojgTihEeKQD9KgCuIpvA" x="368" y="74"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_QHhEkjihEeKQD9KgCuIpvA"/>
+  <element xmi:type="simplepdl:Process" href="default.simplepdl#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_U70hEDihEeKQD9KgCuIpvA" type="4002" source="_RCZYcDihEeKQD9KgCuIpvA" target="_R33n4DihEeKQD9KgCuIpvA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_U70hETihEeKQD9KgCuIpvA" fontName="Sans"/>
+    <element xmi:type="simplepdl:WorkSequence" href="default.simplepdl#//@processElements.2"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_U70hEjihEeKQD9KgCuIpvA" points="[20, 6, -215, -65]$[242, 91, 7, 20]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_hIsGkDihEeKCzuuDgPb1Uw" type="4001" source="_V2ojgDihEeKQD9KgCuIpvA" target="_R33n4DihEeKQD9KgCuIpvA">
+    <styles xmi:type="notation:FontStyle" xmi:id="_hIsGkTihEeKCzuuDgPb1Uw" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hIsGkjihEeKCzuuDgPb1Uw" points="[-15, 20, 65, -91]$[-78, 103, 2, -8]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hI0CYDihEeKCzuuDgPb1Uw" id="(0.575,0.2)"/>
+  </edges>
+</notation:Diagram>

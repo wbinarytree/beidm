@@ -1,0 +1,5 @@
+process dvp {
+wd a { }
+wd b { start if a started }
+wd c { finish if b finished }
+}

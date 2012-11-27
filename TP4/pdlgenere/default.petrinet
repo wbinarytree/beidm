@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinet:PetriNet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:petrinet="http://petrinet">
+  <nodes xsi:type="petrinet:Place" name="Conception_ready" outgoings="//@arcs.0"/>
+  <nodes xsi:type="petrinet:Transition" name="Conception_start" incomings="//@arcs.0"/>
+  <arcs target="//@nodes.1" source="//@nodes.0"/>
+</petrinet:PetriNet>

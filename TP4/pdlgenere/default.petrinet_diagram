@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:petrinet="http://petrinet" xmi:id="_9ICh0TirEeKMvcToLmDLMg" type="PetriNet" name="default.petrinet_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_9zmnUDirEeKMvcToLmDLMg" type="2001" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="_9zocgDirEeKMvcToLmDLMg" type="5001"/>
+    <element xmi:type="petrinet:Place" href="default.petrinet#//@nodes.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9zmnUTirEeKMvcToLmDLMg" x="205" y="226"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="__y2iQDirEeKMvcToLmDLMg" type="2002" fontName="Sans">
+    <children xmi:type="notation:DecorationNode" xmi:id="__y3JUDirEeKMvcToLmDLMg" type="5002"/>
+    <element xmi:type="petrinet:Transition" href="default.petrinet#//@nodes.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="__y2iQTirEeKMvcToLmDLMg" x="230" y="360"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_9ICh0jirEeKMvcToLmDLMg"/>
+  <element xmi:type="petrinet:PetriNet" href="default.petrinet#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_BcDUsDisEeKMvcToLmDLMg" type="4001" source="_9zmnUDirEeKMvcToLmDLMg" target="__y2iQDirEeKMvcToLmDLMg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_BcDUsTisEeKMvcToLmDLMg" fontName="Sans"/>
+    <element xmi:type="petrinet:Arc" href="default.petrinet#//@arcs.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_BcDUsjisEeKMvcToLmDLMg" points="[38, 20, 38, 20]$[38, 20, 38, 20]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B_pJ8DisEeKMvcToLmDLMg" id="(0.4214876033057851,0.825)"/>
+  </edges>
+</notation:Diagram>

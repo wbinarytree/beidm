@@ -1,0 +1,7 @@
+#Tue Nov 27 17:22:35 CET 2012
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/tp4petri/petriNet.genmodel
+gmf_dashboard/domainModel=platform\:/resource/tp4petri/PetriNet.ecore
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/tp4petri/PetriNet.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/tp4petri/PetriNet.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/tp4petri/PetriNet.gmftool

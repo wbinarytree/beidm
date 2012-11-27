@@ -1,0 +1,7 @@
+# Tracing options for the tp4petri.diagram plug-in
+
+# Common issues
+tp4petri.diagram/debug=false
+
+# Visual IDs
+tp4petri.diagram/debug/visualID=false
