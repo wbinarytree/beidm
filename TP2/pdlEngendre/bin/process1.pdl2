@@ -1,5 +1,0 @@
-process dvp2 {
-	wd a {}
-	wd b {start if a started}
-	wd c {start if a started finish if b finished}
-}
