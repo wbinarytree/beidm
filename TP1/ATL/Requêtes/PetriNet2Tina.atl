@@ -39,7 +39,7 @@ def: toTina(): String =
 		= self.outgoings->collect(arc | arc.asTina(false))
 	in
 		'tr '  + self.name
-		-- + ' [' + self.min_time + ',' + self.max_time + ']'
+		+ ' [' + self.min_time + ',' + self.max_time + ']'
 		+ thisModule.concatenateStrings(inNodesNames, ' ', '')
 		+ ' -> '
 		+ thisModule.concatenateStrings(outNodesNames, ' ', '')
