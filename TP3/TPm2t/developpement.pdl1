@@ -1,0 +1,11 @@
+process developpement{
+	wd Conception
+	wd RedactionDoc
+	wd Developpement
+	wd RedactionTests
+	ws Conception s2s RedactionDoc
+	ws Conception f2f RedactionDoc
+	ws Conception f2s Developpement
+	ws Conception s2s RedactionTests
+	ws Developpement f2f RedactionTests
+}
