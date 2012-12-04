@@ -1,0 +1,58 @@
+digraph developpement {
+	subgraph place {
+	    graph [shape=circle,color=gray];
+	    node [shape=circle,fixedsize=true,width=2];
+		"Conception_ready";
+		"Conception_started";
+		"Conception_finished";
+		"Conception_hasStarted";
+		"RedactionDoc_ready";
+		"RedactionDoc_started";
+		"RedactionDoc_finished";
+		"RedactionDoc_hasStarted";
+		"Developpement_ready";
+		"Developpement_started";
+		"Developpement_finished";
+		"Developpement_hasStarted";
+		"RedactionTests_ready";
+		"RedactionTests_started";
+		"RedactionTests_finished";
+		"RedactionTests_hasStarted";
+	}
+	subgraph transitions {
+	    node [shape=rect,height=0.2,width=2];
+		"Conception_start";
+		"Conception_finish";
+		"RedactionDoc_start";
+		"RedactionDoc_finish";
+		"Developpement_start";
+		"Developpement_finish";
+		"RedactionTests_start";
+		"RedactionTests_finish";
+	}
+"Conception_ready"->"Conception_start"
+"Conception_start"->"Conception_started"
+"Conception_started"->"Conception_finish"
+"Conception_finish"->"Conception_finished"
+"Conception_start"->"Conception_hasStarted"
+"RedactionDoc_ready"->"RedactionDoc_start"
+"RedactionDoc_start"->"RedactionDoc_started"
+"RedactionDoc_started"->"RedactionDoc_finish"
+"RedactionDoc_finish"->"RedactionDoc_finished"
+"RedactionDoc_start"->"RedactionDoc_hasStarted"
+"Developpement_ready"->"Developpement_start"
+"Developpement_start"->"Developpement_started"
+"Developpement_started"->"Developpement_finish"
+"Developpement_finish"->"Developpement_finished"
+"Developpement_start"->"Developpement_hasStarted"
+"RedactionTests_ready"->"RedactionTests_start"
+"RedactionTests_start"->"RedactionTests_started"
+"RedactionTests_started"->"RedactionTests_finish"
+"RedactionTests_finish"->"RedactionTests_finished"
+"RedactionTests_start"->"RedactionTests_hasStarted"
+"Conception_hasStarted"->"RedactionDoc_start"
+"Conception_finished"->"RedactionDoc_finish"
+"Conception_finished"->"Developpement_start"
+"Conception_hasStarted"->"RedactionTests_start"
+"Developpement_finished"->"RedactionTests_finish"
+}

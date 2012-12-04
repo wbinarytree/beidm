@@ -5,7 +5,7 @@
 
 [template public toPDL(proc : Process)]
 [comment @main/]
-[file (proc.name.concat('.dot'), false, 'UTF-8')]
+[file (proc.name.concat('.pdl.dot'), false, 'UTF-8')]
 digraph [proc.name/] {
 [for (ws : WorkSequence | proc.processElements->getWSs())]
 	[ws.predecessor.name/]->[ws.successor.name/]

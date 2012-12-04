@@ -1,7 +1,0 @@
-digraph developpement {
-	Conception->RedactionDoc
-	Conception->RedactionDoc
-	Conception->Developpement
-	Conception->RedactionTests
-	Developpement->RedactionTests
-}

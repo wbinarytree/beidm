@@ -4,7 +4,7 @@
 
 [template public toPDL(proc : Process)]
 [comment @main/]
-[file (proc.name.concat('.pdl1'), false, 'UTF-8')]
+[file (proc.name.concat('.pdl'), false, 'UTF-8')]
 process [proc.name/]{
 [for (wd : WorkDefinition | proc.processElements->getWDs())]
 	wd [wd.name/]
