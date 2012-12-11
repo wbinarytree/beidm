@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import simplepdl.Guidance;
+import simplepdl.RessourceDefinition;
+import simplepdl.RessourceInstance;
 import simplepdl.Ressource;
 import simplepdl.SimplepdlFactory;
 import simplepdl.SimplepdlPackage;
@@ -67,7 +69,8 @@ public class SimplepdlFactoryImpl extends EFactoryImpl implements SimplepdlFacto
 			case SimplepdlPackage.WORK_DEFINITION: return createWorkDefinition();
 			case SimplepdlPackage.WORK_SEQUENCE: return createWorkSequence();
 			case SimplepdlPackage.GUIDANCE: return createGuidance();
-			case SimplepdlPackage.RESSOURCE: return createRessource();
+			case SimplepdlPackage.RESSOURCE_DEFINITION: return createRessourceDefinition();
+			case SimplepdlPackage.RESSOURCE_INSTANCE: return createRessourceInstance();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -148,9 +151,19 @@ public class SimplepdlFactoryImpl extends EFactoryImpl implements SimplepdlFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Ressource createRessource() {
-		RessourceImpl ressource = new RessourceImpl();
-		return ressource;
+	public RessourceDefinition createRessourceDefinition() {
+		RessourceDefinitionImpl ressourceDefinition = new RessourceDefinitionImpl();
+		return ressourceDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RessourceInstance createRessourceInstance() {
+		RessourceInstanceImpl ressourceInstance = new RessourceInstanceImpl();
+		return ressourceInstance;
 	}
 
 	/**

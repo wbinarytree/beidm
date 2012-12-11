@@ -1,7 +1,0 @@
-eclipse.preferences.version=1
-gmf_dashboard/domainGenerationModel=platform\:/resource/BE/SimplePDL.genmodel
-gmf_dashboard/domainModel=platform\:/resource/BE/SimplePDL.ecore
-gmf_dashboard/generationModel=platform\:/resource/BEGraphical/SimplePDL.gmfgen
-gmf_dashboard/graphicalDefinitionModel=platform\:/resource/BE/SimplePDL.gmfgraph
-gmf_dashboard/mappingModel=platform\:/resource/BE/SimplePDL.gmfmap
-gmf_dashboard/toolingDefinitionModel=platform\:/resource/BE/SimplePDL.gmftool

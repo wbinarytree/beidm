@@ -20,6 +20,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//WorkDefinition/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//WorkDefinition/min_time"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//WorkDefinition/max_time"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//WorkDefinition/linksToRessources"/>
     </genClasses>
     <genClasses ecoreClass="SimplePDL.ecore#//WorkSequence">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//WorkSequence/linkType"/>
@@ -31,9 +32,14 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//Guidance/element"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Guidance/text"/>
     </genClasses>
-    <genClasses ecoreClass="SimplePDL.ecore#//Ressource">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Ressource/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Ressource/occurence"/>
+    <genClasses ecoreClass="SimplePDL.ecore#//RessourceDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//RessourceDefinition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//RessourceDefinition/number"/>
+    </genClasses>
+    <genClasses ecoreClass="SimplePDL.ecore#//RessourceInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//RessourceInstance/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//RessourceInstance/activity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//RessourceInstance/instances"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

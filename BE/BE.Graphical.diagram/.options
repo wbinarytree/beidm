@@ -1,0 +1,7 @@
+# Tracing options for the BE.Graphical.diagram plug-in
+
+# Common issues
+BE.Graphical.diagram/debug=false
+
+# Visual IDs
+BE.Graphical.diagram/debug/visualID=false

@@ -11,6 +11,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import simplepdl.Guidance;
 import simplepdl.ProcessElement;
+import simplepdl.RessourceDefinition;
+import simplepdl.RessourceInstance;
 import simplepdl.Ressource;
 import simplepdl.SimplepdlPackage;
 import simplepdl.WorkDefinition;
@@ -93,8 +95,12 @@ public class SimplepdlAdapterFactory extends AdapterFactoryImpl {
 				return createGuidanceAdapter();
 			}
 			@Override
-			public Adapter caseRessource(Ressource object) {
-				return createRessourceAdapter();
+			public Adapter caseRessourceDefinition(RessourceDefinition object) {
+				return createRessourceDefinitionAdapter();
+			}
+			@Override
+			public Adapter caseRessourceInstance(RessourceInstance object) {
+				return createRessourceInstanceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -187,16 +193,30 @@ public class SimplepdlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simplepdl.Ressource <em>Ressource</em>}'.
+	 * Creates a new adapter for an object of class '{@link simplepdl.RessourceDefinition <em>Ressource Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simplepdl.Ressource
+	 * @see simplepdl.RessourceDefinition
 	 * @generated
 	 */
-	public Adapter createRessourceAdapter() {
+	public Adapter createRessourceDefinitionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link simplepdl.RessourceInstance <em>Ressource Instance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see simplepdl.RessourceInstance
+	 * @generated
+	 */
+	public Adapter createRessourceInstanceAdapter() {
 		return null;
 	}
 

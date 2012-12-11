@@ -9,6 +9,8 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import simplepdl.Guidance;
 import simplepdl.ProcessElement;
+import simplepdl.RessourceDefinition;
+import simplepdl.RessourceInstance;
 import simplepdl.Ressource;
 import simplepdl.SimplepdlPackage;
 import simplepdl.WorkDefinition;
@@ -104,10 +106,17 @@ public class SimplepdlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimplepdlPackage.RESSOURCE: {
-				Ressource ressource = (Ressource)theEObject;
-				T result = caseRessource(ressource);
-				if (result == null) result = caseProcessElement(ressource);
+			case SimplepdlPackage.RESSOURCE_DEFINITION: {
+				RessourceDefinition ressourceDefinition = (RessourceDefinition)theEObject;
+				T result = caseRessourceDefinition(ressourceDefinition);
+				if (result == null) result = caseProcessElement(ressourceDefinition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimplepdlPackage.RESSOURCE_INSTANCE: {
+				RessourceInstance ressourceInstance = (RessourceInstance)theEObject;
+				T result = caseRessourceInstance(ressourceInstance);
+				if (result == null) result = caseProcessElement(ressourceInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -191,17 +200,32 @@ public class SimplepdlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Ressource</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Ressource Definition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Ressource</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Ressource Definition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRessource(Ressource object) {
+	public T caseRessourceDefinition(RessourceDefinition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ressource Instance</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ressource Instance</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRessourceInstance(RessourceInstance object) {
 		return null;
 	}
 
