@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl">
+  <processElements xsi:type="simplepdl:WorkDefinition" linksToSuccessors="//@processElements.3 //@processElements.9 //@processElements.10 //@processElements.11" name="Conception" min_time="10" max_time="16" linksToRessources="//@processElements.4 //@processElements.6"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" linksToPredecessors="//@processElements.3 //@processElements.9" name="RedactionDoc" min_time="8" max_time="12" linksToRessources="//@processElements.13 //@processElements.14"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="concepteur" number="3"/>
+  <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.2" activity="//@processElements.0" instances="2"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="machine" number="4"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.5" activity="//@processElements.0" instances="2"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" linksToPredecessors="//@processElements.10" name="Development" min_time="12" max_time="14" linksToRessources="//@processElements.16 //@processElements.17"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" linksToPredecessors="//@processElements.11" name="RedactionTest" min_time="10" max_time="12" linksToRessources="//@processElements.19 //@processElements.20"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish" predecessor="//@processElements.0" successor="//@processElements.1"/>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToStart" predecessor="//@processElements.0" successor="//@processElements.7"/>
+  <processElements xsi:type="simplepdl:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.8"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="redacteur" number="1"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.12" activity="//@processElements.1" instances="1"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.5" activity="//@processElements.1" instances="1"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="developpeur" number="2"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.15" activity="//@processElements.7" instances="2"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.5" activity="//@processElements.7" instances="3"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="testeur" number="2"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.18" activity="//@processElements.8" instances="1"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.5" activity="//@processElements.8" instances="2"/>
+</simplepdl:Process>
