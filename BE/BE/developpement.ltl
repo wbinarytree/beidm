@@ -1,0 +1,20 @@
+#definition de l'operateur finished
+op finished = Conception_finished /\ RedactionDoc_finished /\ Developpement_finished /\ RedactionTests_finished ;
+
+#regles de terminaison processus
+[] (finished => dead);
+[] <> dead;
+[] (dead => finished);
+- <> finished;
+
+#invariant processus 1
+[] (Conception_ready \/ Conception_started \/ Conception_finished);
+[] (RedactionDoc_ready \/ RedactionDoc_started \/ RedactionDoc_finished);
+[] (Developpement_ready \/ Developpement_started \/ Developpement_finished);
+[] (RedactionTests_ready \/ RedactionTests_started \/ RedactionTests_finished);
+
+#invariant processus 2
+[] (Conception_finished => - <> (Conception_ready \/ Conception_started));
+[] (RedactionDoc_finished => - <> (RedactionDoc_ready \/ RedactionDoc_started));
+[] (Developpement_finished => - <> (Developpement_ready \/ Developpement_started));
+[] (RedactionTests_finished => - <> (RedactionTests_ready \/ RedactionTests_started));

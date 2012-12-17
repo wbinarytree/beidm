@@ -4,26 +4,26 @@
   <nodes xsi:type="petrinet:Place" name="Conception_started" outgoings="//@arcs.2" incomings="//@arcs.1"/>
   <nodes xsi:type="petrinet:Place" name="Conception_finished" outgoings="//@arcs.21 //@arcs.22" incomings="//@arcs.3"/>
   <nodes xsi:type="petrinet:Place" name="Conception_hasStarted" outgoings="//@arcs.20 //@arcs.23" incomings="//@arcs.4"/>
-  <nodes xsi:type="petrinet:Transition" name="Conception_start" outgoings="//@arcs.1 //@arcs.4" incomings="//@arcs.0 //@arcs.25 //@arcs.27" min_time="10" max_time="16"/>
-  <nodes xsi:type="petrinet:Transition" name="Conception_finish" outgoings="//@arcs.3 //@arcs.26 //@arcs.28" incomings="//@arcs.2" min_time="10" max_time="16"/>
+  <nodes xsi:type="petrinet:Transition" name="Conception_start" outgoings="//@arcs.1 //@arcs.4" incomings="//@arcs.0 //@arcs.25 //@arcs.27"/>
+  <nodes xsi:type="petrinet:Transition" name="Conception_finish" outgoings="//@arcs.3 //@arcs.26 //@arcs.28" incomings="//@arcs.2"/>
   <nodes xsi:type="petrinet:Place" name="RedactionDoc_ready" outgoings="//@arcs.5" marking="1"/>
   <nodes xsi:type="petrinet:Place" name="RedactionDoc_started" outgoings="//@arcs.7" incomings="//@arcs.6"/>
   <nodes xsi:type="petrinet:Place" name="RedactionDoc_finished" incomings="//@arcs.8"/>
   <nodes xsi:type="petrinet:Place" name="RedactionDoc_hasStarted" incomings="//@arcs.9"/>
-  <nodes xsi:type="petrinet:Transition" name="RedactionDoc_start" outgoings="//@arcs.6 //@arcs.9" incomings="//@arcs.5 //@arcs.20 //@arcs.29 //@arcs.31" min_time="8" max_time="12"/>
-  <nodes xsi:type="petrinet:Transition" name="RedactionDoc_finish" outgoings="//@arcs.8 //@arcs.30 //@arcs.32" incomings="//@arcs.7 //@arcs.21" min_time="8" max_time="12"/>
+  <nodes xsi:type="petrinet:Transition" name="RedactionDoc_start" outgoings="//@arcs.6 //@arcs.9" incomings="//@arcs.5 //@arcs.20 //@arcs.29 //@arcs.31"/>
+  <nodes xsi:type="petrinet:Transition" name="RedactionDoc_finish" outgoings="//@arcs.8 //@arcs.30 //@arcs.32" incomings="//@arcs.7 //@arcs.21"/>
   <nodes xsi:type="petrinet:Place" name="Developpement_ready" outgoings="//@arcs.10" marking="1"/>
   <nodes xsi:type="petrinet:Place" name="Developpement_started" outgoings="//@arcs.12" incomings="//@arcs.11"/>
   <nodes xsi:type="petrinet:Place" name="Developpement_finished" outgoings="//@arcs.24" incomings="//@arcs.13"/>
   <nodes xsi:type="petrinet:Place" name="Developpement_hasStarted" incomings="//@arcs.14"/>
-  <nodes xsi:type="petrinet:Transition" name="Developpement_start" outgoings="//@arcs.11 //@arcs.14" incomings="//@arcs.10 //@arcs.22 //@arcs.33 //@arcs.35" min_time="12" max_time="14"/>
-  <nodes xsi:type="petrinet:Transition" name="Developpement_finish" outgoings="//@arcs.13 //@arcs.34 //@arcs.36" incomings="//@arcs.12" min_time="12" max_time="14"/>
+  <nodes xsi:type="petrinet:Transition" name="Developpement_start" outgoings="//@arcs.11 //@arcs.14" incomings="//@arcs.10 //@arcs.22 //@arcs.33 //@arcs.35"/>
+  <nodes xsi:type="petrinet:Transition" name="Developpement_finish" outgoings="//@arcs.13 //@arcs.34 //@arcs.36" incomings="//@arcs.12"/>
   <nodes xsi:type="petrinet:Place" name="RedactionTests_ready" outgoings="//@arcs.15" marking="1"/>
   <nodes xsi:type="petrinet:Place" name="RedactionTests_started" outgoings="//@arcs.17" incomings="//@arcs.16"/>
   <nodes xsi:type="petrinet:Place" name="RedactionTests_finished" incomings="//@arcs.18"/>
   <nodes xsi:type="petrinet:Place" name="RedactionTests_hasStarted" incomings="//@arcs.19"/>
-  <nodes xsi:type="petrinet:Transition" name="RedactionTests_start" outgoings="//@arcs.16 //@arcs.19" incomings="//@arcs.15 //@arcs.23 //@arcs.37 //@arcs.39" min_time="10" max_time="12"/>
-  <nodes xsi:type="petrinet:Transition" name="RedactionTests_finish" outgoings="//@arcs.18 //@arcs.38 //@arcs.40" incomings="//@arcs.17 //@arcs.24" min_time="10" max_time="12"/>
+  <nodes xsi:type="petrinet:Transition" name="RedactionTests_start" outgoings="//@arcs.16 //@arcs.19" incomings="//@arcs.15 //@arcs.23 //@arcs.37 //@arcs.39"/>
+  <nodes xsi:type="petrinet:Transition" name="RedactionTests_finish" outgoings="//@arcs.18 //@arcs.38 //@arcs.40" incomings="//@arcs.17 //@arcs.24"/>
   <nodes xsi:type="petrinet:Place" name="Concepteur" outgoings="//@arcs.25" incomings="//@arcs.26" marking="3"/>
   <nodes xsi:type="petrinet:Place" name="Redacteur" outgoings="//@arcs.29" incomings="//@arcs.30" marking="1"/>
   <nodes xsi:type="petrinet:Place" name="Developpeur" outgoings="//@arcs.33" incomings="//@arcs.34" marking="2"/>

@@ -3,26 +3,26 @@ pl Conception_ready(1)
 pl Conception_started(0)
 pl Conception_finished(0)
 pl Conception_hasStarted(0)
-tr Conception_start [10,16] Conception_ready*1 Concepteur*2 Machine*2 ->  Conception_started*1 Conception_hasStarted*1
-tr Conception_finish [10,16] Conception_started*1 ->  Conception_finished*1 Concepteur*2 Machine*2
+tr Conception_start [0,0] Conception_ready*1 Concepteur*2 Machine*2 ->  Conception_started*1 Conception_hasStarted*1
+tr Conception_finish [0,0] Conception_started*1 ->  Conception_finished*1 Concepteur*2 Machine*2
 pl RedactionDoc_ready(1)
 pl RedactionDoc_started(0)
 pl RedactionDoc_finished(0)
 pl RedactionDoc_hasStarted(0)
-tr RedactionDoc_start [8,12] RedactionDoc_ready*1 Conception_hasStarted?1 Redacteur*1 Machine*1 ->  RedactionDoc_started*1 RedactionDoc_hasStarted*1
-tr RedactionDoc_finish [8,12] RedactionDoc_started*1 Conception_finished?1 ->  RedactionDoc_finished*1 Redacteur*1 Machine*1
+tr RedactionDoc_start [0,0] RedactionDoc_ready*1 Conception_hasStarted?1 Redacteur*1 Machine*1 ->  RedactionDoc_started*1 RedactionDoc_hasStarted*1
+tr RedactionDoc_finish [0,0] RedactionDoc_started*1 Conception_finished?1 ->  RedactionDoc_finished*1 Redacteur*1 Machine*1
 pl Developpement_ready(1)
 pl Developpement_started(0)
 pl Developpement_finished(0)
 pl Developpement_hasStarted(0)
-tr Developpement_start [12,14] Developpement_ready*1 Conception_finished?1 Developpeur*2 Machine*3 ->  Developpement_started*1 Developpement_hasStarted*1
-tr Developpement_finish [12,14] Developpement_started*1 ->  Developpement_finished*1 Developpeur*2 Machine*3
+tr Developpement_start [0,0] Developpement_ready*1 Conception_finished?1 Developpeur*2 Machine*3 ->  Developpement_started*1 Developpement_hasStarted*1
+tr Developpement_finish [0,0] Developpement_started*1 ->  Developpement_finished*1 Developpeur*2 Machine*3
 pl RedactionTests_ready(1)
 pl RedactionTests_started(0)
 pl RedactionTests_finished(0)
 pl RedactionTests_hasStarted(0)
-tr RedactionTests_start [10,12] RedactionTests_ready*1 Conception_hasStarted?1 Testeur*1 Machine*2 ->  RedactionTests_started*1 RedactionTests_hasStarted*1
-tr RedactionTests_finish [10,12] RedactionTests_started*1 Developpement_finished?1 ->  RedactionTests_finished*1 Testeur*1 Machine*2
+tr RedactionTests_start [0,0] RedactionTests_ready*1 Conception_hasStarted?1 Testeur*1 Machine*2 ->  RedactionTests_started*1 RedactionTests_hasStarted*1
+tr RedactionTests_finish [0,0] RedactionTests_started*1 Developpement_finished?1 ->  RedactionTests_finished*1 Testeur*1 Machine*2
 pl Concepteur(3)
 pl Redacteur(1)
 pl Developpeur(2)
