@@ -1,7 +1,4 @@
 net developpement
-pl developpement_ready(1)
-pl developpement_finished(1)
-tr developpement_start [0,w[ developpement_ready*1 -> 
 pl Conception_ready(0)
 pl Conception_started(0)
 pl Conception_finished(0)
@@ -67,3 +64,6 @@ pl Redacteur(1)
 pl Developpeur(2)
 pl Testeur(2)
 pl Machine(4)
+pl developpement_ready(1)
+pl developpement_finished(0)
+tr developpement_start [0,w[ developpement_ready*1 -> 
