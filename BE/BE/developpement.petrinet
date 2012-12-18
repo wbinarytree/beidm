@@ -67,7 +67,7 @@
   <nodes xsi:type="petrinet:Place" name="Machine" outgoings="//@arcs.87 //@arcs.91 //@arcs.95 //@arcs.99" incomings="//@arcs.88 //@arcs.92 //@arcs.96 //@arcs.100" marking="4"/>
   <nodes xsi:type="petrinet:Place" name="developpement_ready" outgoings="//@arcs.101" marking="1"/>
   <nodes xsi:type="petrinet:Place" name="developpement_finished" incomings="//@arcs.19 //@arcs.39 //@arcs.59 //@arcs.79"/>
-  <nodes xsi:type="petrinet:Transition" name="developpement_start" incomings="//@arcs.101" max_time="-1"/>
+  <nodes xsi:type="petrinet:Transition" name="developpement_start" outgoings="//@arcs.18 //@arcs.38 //@arcs.58 //@arcs.78" incomings="//@arcs.101" max_time="-1"/>
   <arcs target="//@nodes.4" source="//@nodes.0" weight="1"/>
   <arcs target="//@nodes.1" source="//@nodes.4" weight="1"/>
   <arcs target="//@nodes.5" source="//@nodes.1" weight="1"/>
@@ -86,7 +86,7 @@
   <arcs target="//@nodes.11" source="//@nodes.2" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.13" source="//@nodes.1" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.14" source="//@nodes.2" weight="1" kind="read_arc"/>
-  <arcs target="//@nodes.0" weight="1"/>
+  <arcs target="//@nodes.0" source="//@nodes.67" weight="1"/>
   <arcs target="//@nodes.66" source="//@nodes.5" weight="1"/>
   <arcs target="//@nodes.19" source="//@nodes.15" weight="1"/>
   <arcs target="//@nodes.16" source="//@nodes.19" weight="1"/>
@@ -106,7 +106,7 @@
   <arcs target="//@nodes.26" source="//@nodes.17" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.28" source="//@nodes.16" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.29" source="//@nodes.17" weight="1" kind="read_arc"/>
-  <arcs target="//@nodes.15" weight="1"/>
+  <arcs target="//@nodes.15" source="//@nodes.67" weight="1"/>
   <arcs target="//@nodes.66" source="//@nodes.20" weight="1"/>
   <arcs target="//@nodes.34" source="//@nodes.30" weight="1"/>
   <arcs target="//@nodes.31" source="//@nodes.34" weight="1"/>
@@ -126,7 +126,7 @@
   <arcs target="//@nodes.41" source="//@nodes.32" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.43" source="//@nodes.31" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.44" source="//@nodes.32" weight="1" kind="read_arc"/>
-  <arcs target="//@nodes.30" weight="1"/>
+  <arcs target="//@nodes.30" source="//@nodes.67" weight="1"/>
   <arcs target="//@nodes.66" source="//@nodes.35" weight="1"/>
   <arcs target="//@nodes.49" source="//@nodes.45" weight="1"/>
   <arcs target="//@nodes.46" source="//@nodes.49" weight="1"/>
@@ -146,7 +146,7 @@
   <arcs target="//@nodes.56" source="//@nodes.47" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.58" source="//@nodes.46" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.59" source="//@nodes.47" weight="1" kind="read_arc"/>
-  <arcs target="//@nodes.45" weight="1"/>
+  <arcs target="//@nodes.45" source="//@nodes.67" weight="1"/>
   <arcs target="//@nodes.66" source="//@nodes.50" weight="1"/>
   <arcs target="//@nodes.19" source="//@nodes.3" weight="1" kind="read_arc"/>
   <arcs target="//@nodes.20" source="//@nodes.2" weight="1" kind="read_arc"/>
