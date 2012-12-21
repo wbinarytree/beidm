@@ -29,15 +29,15 @@ public class ProcessItemSemanticEditPolicy extends
 	 * @generated
 	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
+		if (SimplePDLElementTypes.Guidance_2004 == req.getElementType()) {
+			return getGEFWrapper(new GuidanceCreateCommand(req));
+		}
 		if (SimplePDLElementTypes.WorkDefinition_2003 == req.getElementType()) {
 			return getGEFWrapper(new WorkDefinitionCreateCommand(req));
 		}
 		if (SimplePDLElementTypes.RessourceDefinition_2001 == req
 				.getElementType()) {
 			return getGEFWrapper(new RessourceDefinitionCreateCommand(req));
-		}
-		if (SimplePDLElementTypes.Guidance_2004 == req.getElementType()) {
-			return getGEFWrapper(new GuidanceCreateCommand(req));
 		}
 		return super.getCreateCommand(req);
 	}

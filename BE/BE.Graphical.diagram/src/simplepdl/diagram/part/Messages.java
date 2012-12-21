@@ -323,7 +323,7 @@ public class Messages extends NLS {
 	/**
 	 * @generated
 	 */
-	public static String NavigatorGroupName_RessourceDefinition_2001_incominglinks;
+	public static String NavigatorGroupName_RessourceDefinition_2001_outgoinglinks;
 
 	/**
 	 * @generated

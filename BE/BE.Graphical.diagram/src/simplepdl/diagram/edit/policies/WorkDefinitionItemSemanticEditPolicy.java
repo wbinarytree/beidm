@@ -45,6 +45,13 @@ public class WorkDefinitionItemSemanticEditPolicy extends
 		cmd.setTransactionNestingEnabled(false);
 		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
+			if (SimplePDLVisualIDRegistry.getVisualID(incomingLink) == RessourceInstanceEditPart.VISUAL_ID) {
+				DestroyElementRequest r = new DestroyElementRequest(
+						incomingLink.getElement(), false);
+				cmd.add(new DestroyElementCommand(r));
+				cmd.add(new DeleteCommand(getEditingDomain(), incomingLink));
+				continue;
+			}
 			if (SimplePDLVisualIDRegistry.getVisualID(incomingLink) == WorkSequenceEditPart.VISUAL_ID) {
 				DestroyElementRequest r = new DestroyElementRequest(
 						incomingLink.getElement(), false);
@@ -55,13 +62,6 @@ public class WorkDefinitionItemSemanticEditPolicy extends
 		}
 		for (Iterator<?> it = view.getSourceEdges().iterator(); it.hasNext();) {
 			Edge outgoingLink = (Edge) it.next();
-			if (SimplePDLVisualIDRegistry.getVisualID(outgoingLink) == RessourceInstanceEditPart.VISUAL_ID) {
-				DestroyElementRequest r = new DestroyElementRequest(
-						outgoingLink.getElement(), false);
-				cmd.add(new DestroyElementCommand(r));
-				cmd.add(new DeleteCommand(getEditingDomain(), outgoingLink));
-				continue;
-			}
 			if (SimplePDLVisualIDRegistry.getVisualID(outgoingLink) == WorkSequenceEditPart.VISUAL_ID) {
 				DestroyElementRequest r = new DestroyElementRequest(
 						outgoingLink.getElement(), false);
@@ -99,8 +99,7 @@ public class WorkDefinitionItemSemanticEditPolicy extends
 			CreateRelationshipRequest req) {
 		if (SimplePDLElementTypes.RessourceInstance_4001 == req
 				.getElementType()) {
-			return getGEFWrapper(new RessourceInstanceCreateCommand(req,
-					req.getSource(), req.getTarget()));
+			return null;
 		}
 		if (SimplePDLElementTypes.WorkSequence_4002 == req.getElementType()) {
 			return getGEFWrapper(new WorkSequenceCreateCommand(req,
@@ -116,7 +115,8 @@ public class WorkDefinitionItemSemanticEditPolicy extends
 			CreateRelationshipRequest req) {
 		if (SimplePDLElementTypes.RessourceInstance_4001 == req
 				.getElementType()) {
-			return null;
+			return getGEFWrapper(new RessourceInstanceCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (SimplePDLElementTypes.WorkSequence_4002 == req.getElementType()) {
 			return getGEFWrapper(new WorkSequenceCreateCommand(req,

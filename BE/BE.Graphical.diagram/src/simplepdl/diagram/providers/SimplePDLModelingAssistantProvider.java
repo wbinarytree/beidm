@@ -41,9 +41,9 @@ public class SimplePDLModelingAssistantProvider extends
 				.getAdapter(IGraphicalEditPart.class);
 		if (editPart instanceof ProcessEditPart) {
 			ArrayList<IElementType> types = new ArrayList<IElementType>(3);
+			types.add(SimplePDLElementTypes.Guidance_2004);
 			types.add(SimplePDLElementTypes.WorkDefinition_2003);
 			types.add(SimplePDLElementTypes.RessourceDefinition_2001);
-			types.add(SimplePDLElementTypes.Guidance_2004);
 			return types;
 		}
 		return Collections.EMPTY_LIST;
@@ -59,6 +59,10 @@ public class SimplePDLModelingAssistantProvider extends
 			return ((WorkDefinitionEditPart) sourceEditPart)
 					.getMARelTypesOnSource();
 		}
+		if (sourceEditPart instanceof RessourceDefinitionEditPart) {
+			return ((RessourceDefinitionEditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
 		return Collections.EMPTY_LIST;
 	}
 
@@ -70,10 +74,6 @@ public class SimplePDLModelingAssistantProvider extends
 				.getAdapter(IGraphicalEditPart.class);
 		if (targetEditPart instanceof WorkDefinitionEditPart) {
 			return ((WorkDefinitionEditPart) targetEditPart)
-					.getMARelTypesOnTarget();
-		}
-		if (targetEditPart instanceof RessourceDefinitionEditPart) {
-			return ((RessourceDefinitionEditPart) targetEditPart)
 					.getMARelTypesOnTarget();
 		}
 		return Collections.EMPTY_LIST;
@@ -92,6 +92,10 @@ public class SimplePDLModelingAssistantProvider extends
 			return ((WorkDefinitionEditPart) sourceEditPart)
 					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
+		if (sourceEditPart instanceof RessourceDefinitionEditPart) {
+			return ((RessourceDefinitionEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
 		return Collections.EMPTY_LIST;
 	}
 
@@ -106,10 +110,6 @@ public class SimplePDLModelingAssistantProvider extends
 			return ((WorkDefinitionEditPart) targetEditPart)
 					.getMATypesForSource(relationshipType);
 		}
-		if (targetEditPart instanceof RessourceDefinitionEditPart) {
-			return ((RessourceDefinitionEditPart) targetEditPart)
-					.getMATypesForSource(relationshipType);
-		}
 		return Collections.EMPTY_LIST;
 	}
 
@@ -122,6 +122,10 @@ public class SimplePDLModelingAssistantProvider extends
 				.getAdapter(IGraphicalEditPart.class);
 		if (sourceEditPart instanceof WorkDefinitionEditPart) {
 			return ((WorkDefinitionEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof RessourceDefinitionEditPart) {
+			return ((RessourceDefinitionEditPart) sourceEditPart)
 					.getMATypesForTarget(relationshipType);
 		}
 		return Collections.EMPTY_LIST;

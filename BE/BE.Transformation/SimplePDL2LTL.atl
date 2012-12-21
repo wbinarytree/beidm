@@ -1,0 +1,85 @@
+query SimplePDL2LTL = 
+	let repertoire: String = '/home/alex/workspace/BE/' in
+		simplepdl!Process.allInstances()
+			->select(spdl | spdl.toLTL().writeTo(repertoire + spdl.name + '.ltl'));
+
+-- concatenate all the strings of a sequence, adding the before char
+-- before each string and the after char after.
+helper
+def: concatenateStrings(strings: Sequence(String),
+		before: String, after: String): String =
+	strings->iterate(s; acc: String = '' | acc + before + s + after);
+
+helper 
+context simplepdl!Process
+def: toLTL(): String =
+	'#definition de l\'operateur finished\n' +
+	self.op_finished() +
+	'\n#regles de terminaison processus\n' +
+	self.finished_rules() +
+	'\n#invariant processus 1\n' +
+	self.in_activity() + 
+	'\n#invariant processus 2\n' +
+	self.stable_finish()
+;
+
+helper
+context simplepdl!Process
+def: op_finished() : String = 
+	('op finished = ' + (
+		let processElementsStrings: Sequence(String) = 
+			self.processElements->collect(p | if p.oclIsTypeOf(simplepdl!WorkDefinition) then p.op_finished() else '' endif)
+		in
+			thisModule.concatenateStrings(processElementsStrings, '', '')
+	) + ';').regexReplaceAll('...;', ';\n')
+;
+
+helper
+context simplepdl!WorkDefinition
+def: op_finished(): String =
+	self.name + '_finished /\\ '
+;
+
+helper
+context simplepdl!Process
+def : finished_rules() : String = 
+'[] (finished => dead);
+[] <> dead;
+[] (dead => finished);
+- <> finished;
+'
+;
+
+helper
+context simplepdl!Process
+def: in_activity() : String =
+	(
+		let processElementsStrings: Sequence(String) = 
+			self.processElements->collect(p | if p.oclIsTypeOf(simplepdl!WorkDefinition) then p.in_activity() else '' endif)
+		in
+			thisModule.concatenateStrings(processElementsStrings, '', '')
+	)
+;
+
+helper
+context simplepdl!WorkDefinition
+def: in_activity(): String =
+	'[] (' + self.name + '_ready \\/ ' + self.name + '_started \\/ ' + self.name + '_finished);\n' 
+;
+	
+helper
+context simplepdl!Process
+def: stable_finish() : String =
+	(
+		let processElementsStrings: Sequence(String) = 
+			self.processElements->collect(p | if p.oclIsTypeOf(simplepdl!WorkDefinition) then p.stable_finish() else '' endif)
+		in
+			thisModule.concatenateStrings(processElementsStrings, '', '')
+	)
+;
+
+helper
+context simplepdl!WorkDefinition
+def: stable_finish(): String =
+	'[] (' + self.name + '_finished => - <> (' + self.name + '_ready \\/ ' + self.name + '_started' + '));\n' 
+;

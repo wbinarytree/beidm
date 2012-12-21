@@ -253,7 +253,7 @@ public class RessourceDefinitionEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMARelTypesOnTarget() {
+	public List<IElementType> getMARelTypesOnSource() {
 		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
 		types.add(SimplePDLElementTypes.RessourceInstance_4001);
 		return types;
@@ -262,7 +262,19 @@ public class RessourceDefinitionEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
+	public List<IElementType> getMARelTypesOnSourceAndTarget(
+			IGraphicalEditPart targetEditPart) {
+		LinkedList<IElementType> types = new LinkedList<IElementType>();
+		if (targetEditPart instanceof WorkDefinitionEditPart) {
+			types.add(SimplePDLElementTypes.RessourceInstance_4001);
+		}
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (relationshipType == SimplePDLElementTypes.RessourceInstance_4001) {
 			types.add(SimplePDLElementTypes.WorkDefinition_2003);

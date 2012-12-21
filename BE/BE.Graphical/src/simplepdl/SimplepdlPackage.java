@@ -76,13 +76,31 @@ public interface SimplepdlPackage extends EPackage {
 	int PROCESS__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Min time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS__MIN_TIME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Max time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCESS__MAX_TIME = 2;
+
+	/**
 	 * The feature id for the '<em><b>Process Elements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS__PROCESS_ELEMENTS = 1;
+	int PROCESS__PROCESS_ELEMENTS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Process</em>' class.
@@ -91,7 +109,7 @@ public interface SimplepdlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS_FEATURE_COUNT = 2;
+	int PROCESS_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link simplepdl.ProcessElement <em>Process Element</em>}' class.
@@ -382,6 +400,28 @@ public interface SimplepdlPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProcess_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simplepdl.Process#getMin_time <em>Min time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min time</em>'.
+	 * @see simplepdl.Process#getMin_time()
+	 * @see #getProcess()
+	 * @generated
+	 */
+	EAttribute getProcess_Min_time();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simplepdl.Process#getMax_time <em>Max time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max time</em>'.
+	 * @see simplepdl.Process#getMax_time()
+	 * @see #getProcess()
+	 * @generated
+	 */
+	EAttribute getProcess_Max_time();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link simplepdl.Process#getProcessElements <em>Process Elements</em>}'.
@@ -679,6 +719,22 @@ public interface SimplepdlPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROCESS__NAME = eINSTANCE.getProcess_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Min time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS__MIN_TIME = eINSTANCE.getProcess_Min_time();
+
+		/**
+		 * The meta object literal for the '<em><b>Max time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROCESS__MAX_TIME = eINSTANCE.getProcess_Max_time();
 
 		/**
 		 * The meta object literal for the '<em><b>Process Elements</b></em>' containment reference list feature.

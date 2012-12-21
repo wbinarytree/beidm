@@ -11,6 +11,26 @@
         href="SimplePDL.ecore#//Process/processElements"/>
     <ownedChild>
       <domainMetaElement
+          href="SimplePDL.ecore#//Guidance"/>
+      <labelMappings
+          xsi:type="gmfmap:FeatureLabelMapping">
+        <diagramLabel
+            href="SimplePDL.gmfgraph#GuidanceText"/>
+        <features
+            href="SimplePDL.ecore#//Guidance/text"/>
+      </labelMappings>
+      <tool
+          xsi:type="gmftool:CreationTool"
+          href="SimplePDL.gmftool#//@palette/@tools.0/@tools.4"/>
+      <diagramNode
+          href="SimplePDL.gmfgraph#Guidance"/>
+    </ownedChild>
+  </nodes>
+  <nodes>
+    <containmentFeature
+        href="SimplePDL.ecore#//Process/processElements"/>
+    <ownedChild>
+      <domainMetaElement
           href="SimplePDL.ecore#//WorkDefinition"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
@@ -46,26 +66,6 @@
           href="SimplePDL.gmfgraph#RessourceDefinition"/>
     </ownedChild>
   </nodes>
-  <nodes>
-    <containmentFeature
-        href="SimplePDL.ecore#//Process/processElements"/>
-    <ownedChild>
-      <domainMetaElement
-          href="SimplePDL.ecore#//Guidance"/>
-      <labelMappings
-          xsi:type="gmfmap:FeatureLabelMapping">
-        <diagramLabel
-            href="SimplePDL.gmfgraph#GuidanceText"/>
-        <features
-            href="SimplePDL.ecore#//Guidance/text"/>
-      </labelMappings>
-      <tool
-          xsi:type="gmftool:CreationTool"
-          href="SimplePDL.gmftool#//@palette/@tools.0/@tools.4"/>
-      <diagramNode
-          href="SimplePDL.gmfgraph#Guidance"/>
-    </ownedChild>
-  </nodes>
   <links>
     <domainMetaElement
         href="SimplePDL.ecore#//RessourceInstance"/>
@@ -78,10 +78,10 @@
         href="SimplePDL.gmfgraph#RessourceInstance"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="SimplePDL.ecore#//RessourceInstance/activity"/>
+        href="SimplePDL.ecore#//RessourceInstance/type"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="SimplePDL.ecore#//RessourceInstance/type"/>
+        href="SimplePDL.ecore#//RessourceInstance/activity"/>
   </links>
   <links>
     <domainMetaElement

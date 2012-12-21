@@ -13,6 +13,8 @@
     </genEnums>
     <genClasses ecoreClass="SimplePDL.ecore#//Process">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Process/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Process/min_time"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimplePDL.ecore#//Process/max_time"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimplePDL.ecore#//Process/processElements"/>
     </genClasses>
     <genClasses ecoreClass="SimplePDL.ecore#//WorkDefinition">

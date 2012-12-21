@@ -25,6 +25,12 @@ public class SimplePDLEditPartFactory implements EditPartFactory {
 			case ProcessEditPart.VISUAL_ID:
 				return new ProcessEditPart(view);
 
+			case GuidanceEditPart.VISUAL_ID:
+				return new GuidanceEditPart(view);
+
+			case GuidanceTextEditPart.VISUAL_ID:
+				return new GuidanceTextEditPart(view);
+
 			case WorkDefinitionEditPart.VISUAL_ID:
 				return new WorkDefinitionEditPart(view);
 
@@ -36,12 +42,6 @@ public class SimplePDLEditPartFactory implements EditPartFactory {
 
 			case RessourceDefinitionNameEditPart.VISUAL_ID:
 				return new RessourceDefinitionNameEditPart(view);
-
-			case GuidanceEditPart.VISUAL_ID:
-				return new GuidanceEditPart(view);
-
-			case GuidanceTextEditPart.VISUAL_ID:
-				return new GuidanceTextEditPart(view);
 
 			case RessourceInstanceEditPart.VISUAL_ID:
 				return new RessourceInstanceEditPart(view);

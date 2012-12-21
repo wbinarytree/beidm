@@ -1,6 +1,8 @@
 package simplepdl.diagram.edit.parts;
 
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.PolylineDecoration;
+import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITreeBranchEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
@@ -73,6 +75,7 @@ public class WorkSequenceEditPart extends ConnectionNodeEditPart implements
 		public WorkSequenceFigure() {
 
 			createContents();
+			setTargetDecoration(createTargetDecoration());
 		}
 
 		/**
@@ -86,6 +89,14 @@ public class WorkSequenceEditPart extends ConnectionNodeEditPart implements
 
 			this.add(fFigureWorkSequenceLinkTypeFigure);
 
+		}
+
+		/**
+		 * @generated
+		 */
+		private RotatableDecoration createTargetDecoration() {
+			PolylineDecoration df = new PolylineDecoration();
+			return df;
 		}
 
 		/**

@@ -328,7 +328,7 @@ public class SimplePDLBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 * @generated
 		 */
 		public boolean canCreateRessourceInstance_4001(Process container,
-				WorkDefinition source, RessourceDefinition target) {
+				RessourceDefinition source, WorkDefinition target) {
 			return canExistRessourceInstance_4001(container, null, source,
 					target);
 		}
@@ -345,8 +345,8 @@ public class SimplePDLBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 * @generated
 		 */
 		public boolean canExistRessourceInstance_4001(Process container,
-				RessourceInstance linkInstance, WorkDefinition source,
-				RessourceDefinition target) {
+				RessourceInstance linkInstance, RessourceDefinition source,
+				WorkDefinition target) {
 			return true;
 		}
 

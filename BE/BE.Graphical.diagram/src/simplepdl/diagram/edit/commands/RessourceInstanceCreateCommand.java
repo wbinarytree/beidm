@@ -57,10 +57,10 @@ public class RessourceInstanceCreateCommand extends EditElementCommand {
 		if (source == null && target == null) {
 			return false;
 		}
-		if (source != null && false == source instanceof WorkDefinition) {
+		if (source != null && false == source instanceof RessourceDefinition) {
 			return false;
 		}
-		if (target != null && false == target instanceof RessourceDefinition) {
+		if (target != null && false == target instanceof WorkDefinition) {
 			return false;
 		}
 		if (getSource() == null) {
@@ -88,8 +88,8 @@ public class RessourceInstanceCreateCommand extends EditElementCommand {
 		RessourceInstance newElement = SimplepdlFactory.eINSTANCE
 				.createRessourceInstance();
 		getContainer().getProcessElements().add(newElement);
-		newElement.setActivity(getSource());
-		newElement.setType(getTarget());
+		newElement.setType(getSource());
+		newElement.setActivity(getTarget());
 		doConfigure(newElement, monitor, info);
 		((CreateElementRequest) getRequest()).setNewElement(newElement);
 		return CommandResult.newOKCommandResult(newElement);
@@ -130,15 +130,15 @@ public class RessourceInstanceCreateCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected WorkDefinition getSource() {
-		return (WorkDefinition) source;
+	protected RessourceDefinition getSource() {
+		return (RessourceDefinition) source;
 	}
 
 	/**
 	 * @generated
 	 */
-	protected RessourceDefinition getTarget() {
-		return (RessourceDefinition) target;
+	protected WorkDefinition getTarget() {
+		return (WorkDefinition) target;
 	}
 
 	/**

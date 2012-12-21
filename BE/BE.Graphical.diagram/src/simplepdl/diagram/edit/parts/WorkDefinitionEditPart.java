@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RectangleFigure;
@@ -254,8 +255,7 @@ public class WorkDefinitionEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	public List<IElementType> getMARelTypesOnSource() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(SimplePDLElementTypes.RessourceInstance_4001);
+		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
 		types.add(SimplePDLElementTypes.WorkSequence_4002);
 		return types;
 	}
@@ -266,9 +266,6 @@ public class WorkDefinitionEditPart extends ShapeNodeEditPart {
 	public List<IElementType> getMARelTypesOnSourceAndTarget(
 			IGraphicalEditPart targetEditPart) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (targetEditPart instanceof RessourceDefinitionEditPart) {
-			types.add(SimplePDLElementTypes.RessourceInstance_4001);
-		}
 		if (targetEditPart instanceof simplepdl.diagram.edit.parts.WorkDefinitionEditPart) {
 			types.add(SimplePDLElementTypes.WorkSequence_4002);
 		}
@@ -279,6 +276,27 @@ public class WorkDefinitionEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
+		LinkedList<IElementType> types = new LinkedList<IElementType>();
+		if (relationshipType == SimplePDLElementTypes.WorkSequence_4002) {
+			types.add(SimplePDLElementTypes.WorkDefinition_2003);
+		}
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List<IElementType> getMARelTypesOnTarget() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+		types.add(SimplePDLElementTypes.RessourceInstance_4001);
+		types.add(SimplePDLElementTypes.WorkSequence_4002);
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
 		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (relationshipType == SimplePDLElementTypes.RessourceInstance_4001) {
 			types.add(SimplePDLElementTypes.RessourceDefinition_2001);
@@ -291,27 +309,7 @@ public class WorkDefinitionEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List<IElementType> getMARelTypesOnTarget() {
-		ArrayList<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(SimplePDLElementTypes.WorkSequence_4002);
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
-		LinkedList<IElementType> types = new LinkedList<IElementType>();
-		if (relationshipType == SimplePDLElementTypes.WorkSequence_4002) {
-			types.add(SimplePDLElementTypes.WorkDefinition_2003);
-		}
-		return types;
-	}
-
-	/**
-	 * @generated
-	 */
-	public class WorkDefinitionFigure extends RectangleFigure {
+	public class WorkDefinitionFigure extends Ellipse {
 
 		/**
 		 * @generated

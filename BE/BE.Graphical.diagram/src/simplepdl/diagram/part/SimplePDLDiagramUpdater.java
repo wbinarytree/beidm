@@ -59,15 +59,15 @@ public class SimplePDLDiagramUpdater {
 			ProcessElement childElement = (ProcessElement) it.next();
 			int visualID = SimplePDLVisualIDRegistry.getNodeVisualID(view,
 					childElement);
+			if (visualID == GuidanceEditPart.VISUAL_ID) {
+				result.add(new SimplePDLNodeDescriptor(childElement, visualID));
+				continue;
+			}
 			if (visualID == WorkDefinitionEditPart.VISUAL_ID) {
 				result.add(new SimplePDLNodeDescriptor(childElement, visualID));
 				continue;
 			}
 			if (visualID == RessourceDefinitionEditPart.VISUAL_ID) {
-				result.add(new SimplePDLNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == GuidanceEditPart.VISUAL_ID) {
 				result.add(new SimplePDLNodeDescriptor(childElement, visualID));
 				continue;
 			}
@@ -82,12 +82,12 @@ public class SimplePDLDiagramUpdater {
 		switch (SimplePDLVisualIDRegistry.getVisualID(view)) {
 		case ProcessEditPart.VISUAL_ID:
 			return getProcess_1000ContainedLinks(view);
+		case GuidanceEditPart.VISUAL_ID:
+			return getGuidance_2004ContainedLinks(view);
 		case WorkDefinitionEditPart.VISUAL_ID:
 			return getWorkDefinition_2003ContainedLinks(view);
 		case RessourceDefinitionEditPart.VISUAL_ID:
 			return getRessourceDefinition_2001ContainedLinks(view);
-		case GuidanceEditPart.VISUAL_ID:
-			return getGuidance_2004ContainedLinks(view);
 		case RessourceInstanceEditPart.VISUAL_ID:
 			return getRessourceInstance_4001ContainedLinks(view);
 		case WorkSequenceEditPart.VISUAL_ID:
@@ -101,12 +101,12 @@ public class SimplePDLDiagramUpdater {
 	 */
 	public static List<SimplePDLLinkDescriptor> getIncomingLinks(View view) {
 		switch (SimplePDLVisualIDRegistry.getVisualID(view)) {
+		case GuidanceEditPart.VISUAL_ID:
+			return getGuidance_2004IncomingLinks(view);
 		case WorkDefinitionEditPart.VISUAL_ID:
 			return getWorkDefinition_2003IncomingLinks(view);
 		case RessourceDefinitionEditPart.VISUAL_ID:
 			return getRessourceDefinition_2001IncomingLinks(view);
-		case GuidanceEditPart.VISUAL_ID:
-			return getGuidance_2004IncomingLinks(view);
 		case RessourceInstanceEditPart.VISUAL_ID:
 			return getRessourceInstance_4001IncomingLinks(view);
 		case WorkSequenceEditPart.VISUAL_ID:
@@ -120,12 +120,12 @@ public class SimplePDLDiagramUpdater {
 	 */
 	public static List<SimplePDLLinkDescriptor> getOutgoingLinks(View view) {
 		switch (SimplePDLVisualIDRegistry.getVisualID(view)) {
+		case GuidanceEditPart.VISUAL_ID:
+			return getGuidance_2004OutgoingLinks(view);
 		case WorkDefinitionEditPart.VISUAL_ID:
 			return getWorkDefinition_2003OutgoingLinks(view);
 		case RessourceDefinitionEditPart.VISUAL_ID:
 			return getRessourceDefinition_2001OutgoingLinks(view);
-		case GuidanceEditPart.VISUAL_ID:
-			return getGuidance_2004OutgoingLinks(view);
 		case RessourceInstanceEditPart.VISUAL_ID:
 			return getRessourceInstance_4001OutgoingLinks(view);
 		case WorkSequenceEditPart.VISUAL_ID:
@@ -191,14 +191,7 @@ public class SimplePDLDiagramUpdater {
 	 */
 	public static List<SimplePDLLinkDescriptor> getRessourceDefinition_2001IncomingLinks(
 			View view) {
-		RessourceDefinition modelElement = (RessourceDefinition) view
-				.getElement();
-		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
-				.find(view.eResource().getResourceSet().getResources());
-		LinkedList<SimplePDLLinkDescriptor> result = new LinkedList<SimplePDLLinkDescriptor>();
-		result.addAll(getIncomingTypeModelFacetLinks_RessourceInstance_4001(
-				modelElement, crossReferences));
-		return result;
+		return Collections.emptyList();
 	}
 
 	/**
@@ -218,6 +211,8 @@ public class SimplePDLDiagramUpdater {
 		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
 				.find(view.eResource().getResourceSet().getResources());
 		LinkedList<SimplePDLLinkDescriptor> result = new LinkedList<SimplePDLLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_RessourceInstance_4001(
+				modelElement, crossReferences));
 		result.addAll(getIncomingTypeModelFacetLinks_WorkSequence_4002(
 				modelElement, crossReferences));
 		return result;
@@ -244,7 +239,11 @@ public class SimplePDLDiagramUpdater {
 	 */
 	public static List<SimplePDLLinkDescriptor> getRessourceDefinition_2001OutgoingLinks(
 			View view) {
-		return Collections.emptyList();
+		RessourceDefinition modelElement = (RessourceDefinition) view
+				.getElement();
+		LinkedList<SimplePDLLinkDescriptor> result = new LinkedList<SimplePDLLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_RessourceInstance_4001(modelElement));
+		return result;
 	}
 
 	/**
@@ -262,7 +261,6 @@ public class SimplePDLDiagramUpdater {
 			View view) {
 		WorkDefinition modelElement = (WorkDefinition) view.getElement();
 		LinkedList<SimplePDLLinkDescriptor> result = new LinkedList<SimplePDLLinkDescriptor>();
-		result.addAll(getOutgoingTypeModelFacetLinks_RessourceInstance_4001(modelElement));
 		result.addAll(getOutgoingTypeModelFacetLinks_WorkSequence_4002(modelElement));
 		return result;
 	}
@@ -300,8 +298,8 @@ public class SimplePDLDiagramUpdater {
 					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
-			RessourceDefinition dst = link.getType();
-			WorkDefinition src = link.getActivity();
+			WorkDefinition dst = link.getActivity();
+			RessourceDefinition src = link.getType();
 			result.add(new SimplePDLLinkDescriptor(src, dst, link,
 					SimplePDLElementTypes.RessourceInstance_4001,
 					RessourceInstanceEditPart.VISUAL_ID));
@@ -339,14 +337,14 @@ public class SimplePDLDiagramUpdater {
 	 * @generated
 	 */
 	private static Collection<SimplePDLLinkDescriptor> getIncomingTypeModelFacetLinks_RessourceInstance_4001(
-			RessourceDefinition target,
+			WorkDefinition target,
 			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
 		LinkedList<SimplePDLLinkDescriptor> result = new LinkedList<SimplePDLLinkDescriptor>();
 		Collection<EStructuralFeature.Setting> settings = crossReferences
 				.get(target);
 		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != SimplepdlPackage.eINSTANCE
-					.getRessourceInstance_Type()
+					.getRessourceInstance_Activity()
 					|| false == setting.getEObject() instanceof RessourceInstance) {
 				continue;
 			}
@@ -355,7 +353,7 @@ public class SimplePDLDiagramUpdater {
 					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
-			WorkDefinition src = link.getActivity();
+			RessourceDefinition src = link.getType();
 			result.add(new SimplePDLLinkDescriptor(src, target, link,
 					SimplePDLElementTypes.RessourceInstance_4001,
 					RessourceInstanceEditPart.VISUAL_ID));
@@ -395,7 +393,7 @@ public class SimplePDLDiagramUpdater {
 	 * @generated
 	 */
 	private static Collection<SimplePDLLinkDescriptor> getOutgoingTypeModelFacetLinks_RessourceInstance_4001(
-			WorkDefinition source) {
+			RessourceDefinition source) {
 		Process container = null;
 		// Find container element for the link.
 		// Climb up by containment hierarchy starting from the source
@@ -421,8 +419,8 @@ public class SimplePDLDiagramUpdater {
 					.getLinkWithClassVisualID(link)) {
 				continue;
 			}
-			RessourceDefinition dst = link.getType();
-			WorkDefinition src = link.getActivity();
+			WorkDefinition dst = link.getActivity();
+			RessourceDefinition src = link.getType();
 			if (src != source) {
 				continue;
 			}

@@ -92,24 +92,24 @@ public class SimplePDLNavigatorLabelProvider extends LabelProvider implements
 	 */
 	public Image getImage(View view) {
 		switch (SimplePDLVisualIDRegistry.getVisualID(view)) {
-		case RessourceDefinitionEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?TopLevelNode?http://simplepdl?RessourceDefinition", SimplePDLElementTypes.RessourceDefinition_2001); //$NON-NLS-1$
-		case RessourceInstanceEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://simplepdl?RessourceInstance", SimplePDLElementTypes.RessourceInstance_4001); //$NON-NLS-1$
-		case ProcessEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Diagram?http://simplepdl?Process", SimplePDLElementTypes.Process_1000); //$NON-NLS-1$
-		case WorkSequenceEditPart.VISUAL_ID:
-			return getImage(
-					"Navigator?Link?http://simplepdl?WorkSequence", SimplePDLElementTypes.WorkSequence_4002); //$NON-NLS-1$
 		case WorkDefinitionEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http://simplepdl?WorkDefinition", SimplePDLElementTypes.WorkDefinition_2003); //$NON-NLS-1$
 		case GuidanceEditPart.VISUAL_ID:
 			return getImage(
 					"Navigator?TopLevelNode?http://simplepdl?Guidance", SimplePDLElementTypes.Guidance_2004); //$NON-NLS-1$
+		case ProcessEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Diagram?http://simplepdl?Process", SimplePDLElementTypes.Process_1000); //$NON-NLS-1$
+		case RessourceInstanceEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://simplepdl?RessourceInstance", SimplePDLElementTypes.RessourceInstance_4001); //$NON-NLS-1$
+		case WorkSequenceEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?Link?http://simplepdl?WorkSequence", SimplePDLElementTypes.WorkSequence_4002); //$NON-NLS-1$
+		case RessourceDefinitionEditPart.VISUAL_ID:
+			return getImage(
+					"Navigator?TopLevelNode?http://simplepdl?RessourceDefinition", SimplePDLElementTypes.RessourceDefinition_2001); //$NON-NLS-1$
 		}
 		return getImage("Navigator?UnknownElement", null); //$NON-NLS-1$
 	}
@@ -162,18 +162,18 @@ public class SimplePDLNavigatorLabelProvider extends LabelProvider implements
 			return getUnresolvedDomainElementProxyText(view);
 		}
 		switch (SimplePDLVisualIDRegistry.getVisualID(view)) {
-		case RessourceDefinitionEditPart.VISUAL_ID:
-			return getRessourceDefinition_2001Text(view);
-		case RessourceInstanceEditPart.VISUAL_ID:
-			return getRessourceInstance_4001Text(view);
-		case ProcessEditPart.VISUAL_ID:
-			return getProcess_1000Text(view);
-		case WorkSequenceEditPart.VISUAL_ID:
-			return getWorkSequence_4002Text(view);
 		case WorkDefinitionEditPart.VISUAL_ID:
 			return getWorkDefinition_2003Text(view);
 		case GuidanceEditPart.VISUAL_ID:
 			return getGuidance_2004Text(view);
+		case ProcessEditPart.VISUAL_ID:
+			return getProcess_1000Text(view);
+		case RessourceInstanceEditPart.VISUAL_ID:
+			return getRessourceInstance_4001Text(view);
+		case WorkSequenceEditPart.VISUAL_ID:
+			return getWorkSequence_4002Text(view);
+		case RessourceDefinitionEditPart.VISUAL_ID:
+			return getRessourceDefinition_2001Text(view);
 		}
 		return getUnknownElementText(view);
 	}

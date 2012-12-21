@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl">
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="exemple" min_time="20" max_time="50">
   <processElements xsi:type="simplepdl:WorkDefinition" linksToSuccessors="//@processElements.3 //@processElements.9 //@processElements.10 //@processElements.11" name="Conception" min_time="10" max_time="16" linksToRessources="//@processElements.4 //@processElements.6"/>
   <processElements xsi:type="simplepdl:WorkDefinition" linksToPredecessors="//@processElements.3 //@processElements.9" name="RedactionDoc" min_time="8" max_time="12" linksToRessources="//@processElements.13 //@processElements.14"/>
   <processElements xsi:type="simplepdl:RessourceDefinition" name="concepteur" number="3"/>

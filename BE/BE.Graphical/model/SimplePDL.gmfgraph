@@ -3,7 +3,7 @@
   <figures name="Default">
     <figures xsi:type="gmfgraph:PolylineDecoration" name="GuidanceElementTargetDecoration"/>
     <descriptors name="WorkDefinitionFigure">
-      <actualFigure xsi:type="gmfgraph:Rectangle" name="WorkDefinitionFigure">
+      <actualFigure xsi:type="gmfgraph:Ellipse" name="WorkDefinitionFigure">
         <layout xsi:type="gmfgraph:FlowLayout"/>
         <children xsi:type="gmfgraph:Label" name="WorkDefinitionNameFigure" text="&lt;...>"/>
         <children xsi:type="gmfgraph:Label" name="WorkDefinitionMin_timeFigure" text="&lt;...>"/>
@@ -14,7 +14,7 @@
       <accessors figure="//@figures.0/@descriptors.0/@actualFigure/@children.2"/>
     </descriptors>
     <descriptors name="WorkSequenceFigure">
-      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="WorkSequenceFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="WorkSequenceFigure" targetDecoration="//@figures.0/@figures.0">
         <children xsi:type="gmfgraph:Label" name="WorkSequenceLinkTypeFigure" text="&lt;...>"/>
       </actualFigure>
       <accessors figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
@@ -39,7 +39,7 @@
       <accessors figure="//@figures.0/@descriptors.4/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors name="RessourceInstanceFigure">
-      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="RessourceInstanceFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="RessourceInstanceFigure" targetDecoration="//@figures.0/@figures.0">
         <children xsi:type="gmfgraph:Label" name="RessourceInstanceInstancesFigure" text="&lt;...>"/>
       </actualFigure>
       <accessors figure="//@figures.0/@descriptors.5/@actualFigure/@children.0"/>

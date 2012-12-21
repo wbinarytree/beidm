@@ -64,10 +64,10 @@ public class RessourceInstanceReorientCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected boolean canReorientSource() {
-		if (!(oldEnd instanceof WorkDefinition && newEnd instanceof WorkDefinition)) {
+		if (!(oldEnd instanceof RessourceDefinition && newEnd instanceof RessourceDefinition)) {
 			return false;
 		}
-		RessourceDefinition target = getLink().getType();
+		WorkDefinition target = getLink().getActivity();
 		if (!(getLink().eContainer() instanceof Process)) {
 			return false;
 		}
@@ -81,10 +81,10 @@ public class RessourceInstanceReorientCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected boolean canReorientTarget() {
-		if (!(oldEnd instanceof RessourceDefinition && newEnd instanceof RessourceDefinition)) {
+		if (!(oldEnd instanceof WorkDefinition && newEnd instanceof WorkDefinition)) {
 			return false;
 		}
-		WorkDefinition source = getLink().getActivity();
+		RessourceDefinition source = getLink().getType();
 		if (!(getLink().eContainer() instanceof Process)) {
 			return false;
 		}
@@ -116,7 +116,7 @@ public class RessourceInstanceReorientCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected CommandResult reorientSource() throws ExecutionException {
-		getLink().setActivity(getNewSource());
+		getLink().setType(getNewSource());
 		return CommandResult.newOKCommandResult(getLink());
 	}
 
@@ -124,7 +124,7 @@ public class RessourceInstanceReorientCommand extends EditElementCommand {
 	 * @generated
 	 */
 	protected CommandResult reorientTarget() throws ExecutionException {
-		getLink().setType(getNewTarget());
+		getLink().setActivity(getNewTarget());
 		return CommandResult.newOKCommandResult(getLink());
 	}
 
@@ -138,28 +138,28 @@ public class RessourceInstanceReorientCommand extends EditElementCommand {
 	/**
 	 * @generated
 	 */
-	protected WorkDefinition getOldSource() {
-		return (WorkDefinition) oldEnd;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected WorkDefinition getNewSource() {
-		return (WorkDefinition) newEnd;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected RessourceDefinition getOldTarget() {
+	protected RessourceDefinition getOldSource() {
 		return (RessourceDefinition) oldEnd;
 	}
 
 	/**
 	 * @generated
 	 */
-	protected RessourceDefinition getNewTarget() {
+	protected RessourceDefinition getNewSource() {
 		return (RessourceDefinition) newEnd;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected WorkDefinition getOldTarget() {
+		return (WorkDefinition) oldEnd;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected WorkDefinition getNewTarget() {
+		return (WorkDefinition) newEnd;
 	}
 }

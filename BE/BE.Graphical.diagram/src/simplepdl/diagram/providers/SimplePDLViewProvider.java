@@ -144,9 +144,9 @@ public class SimplePDLViewProvider extends AbstractProvider implements
 					return false; // foreign diagram
 				}
 				switch (visualID) {
+				case GuidanceEditPart.VISUAL_ID:
 				case WorkDefinitionEditPart.VISUAL_ID:
 				case RessourceDefinitionEditPart.VISUAL_ID:
-				case GuidanceEditPart.VISUAL_ID:
 					if (domainElement == null
 							|| visualID != SimplePDLVisualIDRegistry
 									.getNodeVisualID(op.getContainerView(),
@@ -159,9 +159,9 @@ public class SimplePDLViewProvider extends AbstractProvider implements
 				}
 			}
 		}
-		return WorkDefinitionEditPart.VISUAL_ID == visualID
-				|| RessourceDefinitionEditPart.VISUAL_ID == visualID
-				|| GuidanceEditPart.VISUAL_ID == visualID;
+		return GuidanceEditPart.VISUAL_ID == visualID
+				|| WorkDefinitionEditPart.VISUAL_ID == visualID
+				|| RessourceDefinitionEditPart.VISUAL_ID == visualID;
 	}
 
 	/**
@@ -218,15 +218,15 @@ public class SimplePDLViewProvider extends AbstractProvider implements
 			visualID = SimplePDLVisualIDRegistry.getVisualID(semanticHint);
 		}
 		switch (visualID) {
+		case GuidanceEditPart.VISUAL_ID:
+			return createGuidance_2004(domainElement, containerView, index,
+					persisted, preferencesHint);
 		case WorkDefinitionEditPart.VISUAL_ID:
 			return createWorkDefinition_2003(domainElement, containerView,
 					index, persisted, preferencesHint);
 		case RessourceDefinitionEditPart.VISUAL_ID:
 			return createRessourceDefinition_2001(domainElement, containerView,
 					index, persisted, preferencesHint);
-		case GuidanceEditPart.VISUAL_ID:
-			return createGuidance_2004(domainElement, containerView, index,
-					persisted, preferencesHint);
 		}
 		// can't happen, provided #provides(CreateNodeViewOperation) is correct
 		return null;

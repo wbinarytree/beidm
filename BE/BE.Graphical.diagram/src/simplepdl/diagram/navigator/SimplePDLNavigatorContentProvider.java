@@ -220,20 +220,72 @@ public class SimplePDLNavigatorContentProvider implements
 	private Object[] getViewChildren(View view, Object parentElement) {
 		switch (SimplePDLVisualIDRegistry.getVisualID(view)) {
 
-		case RessourceDefinitionEditPart.VISUAL_ID: {
+		case WorkDefinitionEditPart.VISUAL_ID: {
 			LinkedList<SimplePDLAbstractNavigatorItem> result = new LinkedList<SimplePDLAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			SimplePDLNavigatorGroup incominglinks = new SimplePDLNavigatorGroup(
-					Messages.NavigatorGroupName_RessourceDefinition_2001_incominglinks,
+					Messages.NavigatorGroupName_WorkDefinition_2003_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			SimplePDLNavigatorGroup outgoinglinks = new SimplePDLNavigatorGroup(
+					Messages.NavigatorGroupName_WorkDefinition_2003_outgoinglinks,
+					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
 					SimplePDLVisualIDRegistry
 							.getType(RessourceInstanceEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
+			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
+					SimplePDLVisualIDRegistry
+							.getType(WorkSequenceEditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
+					SimplePDLVisualIDRegistry
+							.getType(WorkSequenceEditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
 				result.add(incominglinks);
+			}
+			if (!outgoinglinks.isEmpty()) {
+				result.add(outgoinglinks);
+			}
+			return result.toArray();
+		}
+
+		case ProcessEditPart.VISUAL_ID: {
+			LinkedList<SimplePDLAbstractNavigatorItem> result = new LinkedList<SimplePDLAbstractNavigatorItem>();
+			Diagram sv = (Diagram) view;
+			SimplePDLNavigatorGroup links = new SimplePDLNavigatorGroup(
+					Messages.NavigatorGroupName_Process_1000_links,
+					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
+			Collection<View> connectedViews;
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SimplePDLVisualIDRegistry
+							.getType(GuidanceEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SimplePDLVisualIDRegistry
+							.getType(WorkDefinitionEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getChildrenByType(Collections.singleton(sv),
+					SimplePDLVisualIDRegistry
+							.getType(RessourceDefinitionEditPart.VISUAL_ID));
+			result.addAll(createNavigatorItems(connectedViews, parentElement,
+					false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					SimplePDLVisualIDRegistry
+							.getType(RessourceInstanceEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
+					SimplePDLVisualIDRegistry
+							.getType(WorkSequenceEditPart.VISUAL_ID));
+			links.addChildren(createNavigatorItems(connectedViews, links, false));
+			if (!links.isEmpty()) {
+				result.add(links);
 			}
 			return result.toArray();
 		}
@@ -250,12 +302,12 @@ public class SimplePDLNavigatorContentProvider implements
 			Collection<View> connectedViews;
 			connectedViews = getLinksTargetByType(Collections.singleton(sv),
 					SimplePDLVisualIDRegistry
-							.getType(RessourceDefinitionEditPart.VISUAL_ID));
+							.getType(WorkDefinitionEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(sv),
 					SimplePDLVisualIDRegistry
-							.getType(WorkDefinitionEditPart.VISUAL_ID));
+							.getType(RessourceDefinitionEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -263,42 +315,6 @@ public class SimplePDLNavigatorContentProvider implements
 			}
 			if (!source.isEmpty()) {
 				result.add(source);
-			}
-			return result.toArray();
-		}
-
-		case ProcessEditPart.VISUAL_ID: {
-			LinkedList<SimplePDLAbstractNavigatorItem> result = new LinkedList<SimplePDLAbstractNavigatorItem>();
-			Diagram sv = (Diagram) view;
-			SimplePDLNavigatorGroup links = new SimplePDLNavigatorGroup(
-					Messages.NavigatorGroupName_Process_1000_links,
-					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection<View> connectedViews;
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					SimplePDLVisualIDRegistry
-							.getType(WorkDefinitionEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					SimplePDLVisualIDRegistry
-							.getType(RessourceDefinitionEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getChildrenByType(Collections.singleton(sv),
-					SimplePDLVisualIDRegistry
-							.getType(GuidanceEditPart.VISUAL_ID));
-			result.addAll(createNavigatorItems(connectedViews, parentElement,
-					false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					SimplePDLVisualIDRegistry
-							.getType(RessourceInstanceEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			connectedViews = getDiagramLinksByType(Collections.singleton(sv),
-					SimplePDLVisualIDRegistry
-							.getType(WorkSequenceEditPart.VISUAL_ID));
-			links.addChildren(createNavigatorItems(connectedViews, links, false));
-			if (!links.isEmpty()) {
-				result.add(links);
 			}
 			return result.toArray();
 		}
@@ -332,36 +348,20 @@ public class SimplePDLNavigatorContentProvider implements
 			return result.toArray();
 		}
 
-		case WorkDefinitionEditPart.VISUAL_ID: {
+		case RessourceDefinitionEditPart.VISUAL_ID: {
 			LinkedList<SimplePDLAbstractNavigatorItem> result = new LinkedList<SimplePDLAbstractNavigatorItem>();
 			Node sv = (Node) view;
 			SimplePDLNavigatorGroup outgoinglinks = new SimplePDLNavigatorGroup(
-					Messages.NavigatorGroupName_WorkDefinition_2003_outgoinglinks,
+					Messages.NavigatorGroupName_RessourceDefinition_2001_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			SimplePDLNavigatorGroup incominglinks = new SimplePDLNavigatorGroup(
-					Messages.NavigatorGroupName_WorkDefinition_2003_incominglinks,
-					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection<View> connectedViews;
 			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
 					SimplePDLVisualIDRegistry
 							.getType(RessourceInstanceEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(Collections.singleton(sv),
-					SimplePDLVisualIDRegistry
-							.getType(WorkSequenceEditPart.VISUAL_ID));
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(Collections.singleton(sv),
-					SimplePDLVisualIDRegistry
-							.getType(WorkSequenceEditPart.VISUAL_ID));
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
 			if (!outgoinglinks.isEmpty()) {
 				result.add(outgoinglinks);
-			}
-			if (!incominglinks.isEmpty()) {
-				result.add(incominglinks);
 			}
 			return result.toArray();
 		}

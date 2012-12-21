@@ -127,6 +127,10 @@ public class SimplePDLVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case ProcessEditPart.VISUAL_ID:
+			if (SimplepdlPackage.eINSTANCE.getGuidance().isSuperTypeOf(
+					domainElement.eClass())) {
+				return GuidanceEditPart.VISUAL_ID;
+			}
 			if (SimplepdlPackage.eINSTANCE.getWorkDefinition().isSuperTypeOf(
 					domainElement.eClass())) {
 				return WorkDefinitionEditPart.VISUAL_ID;
@@ -134,10 +138,6 @@ public class SimplePDLVisualIDRegistry {
 			if (SimplepdlPackage.eINSTANCE.getRessourceDefinition()
 					.isSuperTypeOf(domainElement.eClass())) {
 				return RessourceDefinitionEditPart.VISUAL_ID;
-			}
-			if (SimplepdlPackage.eINSTANCE.getGuidance().isSuperTypeOf(
-					domainElement.eClass())) {
-				return GuidanceEditPart.VISUAL_ID;
 			}
 			break;
 		}
@@ -166,13 +166,18 @@ public class SimplePDLVisualIDRegistry {
 		}
 		switch (containerVisualID) {
 		case ProcessEditPart.VISUAL_ID:
+			if (GuidanceEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
 			if (WorkDefinitionEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			if (RessourceDefinitionEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
-			if (GuidanceEditPart.VISUAL_ID == nodeVisualID) {
+			break;
+		case GuidanceEditPart.VISUAL_ID:
+			if (GuidanceTextEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;
@@ -183,11 +188,6 @@ public class SimplePDLVisualIDRegistry {
 			break;
 		case RessourceDefinitionEditPart.VISUAL_ID:
 			if (RessourceDefinitionNameEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
-		case GuidanceEditPart.VISUAL_ID:
-			if (GuidanceTextEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

@@ -38,13 +38,13 @@ def: toTina(): String =
 	in let outNodesNames: Sequence(String)
 		= self.outgoings->collect(arc | arc.asTina(false))
 	in
-		'tr '  + self.name
+		('tr '  + self.name
 		+ ' [' + self.min_time + ',' + self.max_time + ']'
 		+ thisModule.concatenateStrings(inNodesNames, ' ', '')
 		+ ' -> '
-		+ thisModule.concatenateStrings(outNodesNames, ' ', '')
+		+ thisModule.concatenateStrings(outNodesNames, ' ', '')).regexReplaceAll('-1]', 'w[')
 ;
-
+		
 -- Translate an Arc to Tina syntax. isSource indicates if it is an
 -- outgoing arc or an incoming one
 helper

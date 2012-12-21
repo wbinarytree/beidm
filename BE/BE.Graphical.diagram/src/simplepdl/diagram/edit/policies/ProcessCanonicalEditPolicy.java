@@ -94,9 +94,9 @@ public class ProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 	 */
 	private boolean isMyDiagramElement(View view) {
 		int visualID = SimplePDLVisualIDRegistry.getVisualID(view);
-		return visualID == WorkDefinitionEditPart.VISUAL_ID
-				|| visualID == RessourceDefinitionEditPart.VISUAL_ID
-				|| visualID == GuidanceEditPart.VISUAL_ID;
+		return visualID == GuidanceEditPart.VISUAL_ID
+				|| visualID == WorkDefinitionEditPart.VISUAL_ID
+				|| visualID == RessourceDefinitionEditPart.VISUAL_ID;
 	}
 
 	/**
@@ -255,6 +255,17 @@ public class ProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 			}
 			break;
 		}
+		case GuidanceEditPart.VISUAL_ID: {
+			if (!domain2NotationMap.containsKey(view.getElement())) {
+				result.addAll(SimplePDLDiagramUpdater
+						.getGuidance_2004ContainedLinks(view));
+			}
+			if (!domain2NotationMap.containsKey(view.getElement())
+					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
+				domain2NotationMap.put(view.getElement(), view);
+			}
+			break;
+		}
 		case WorkDefinitionEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(SimplePDLDiagramUpdater
@@ -270,17 +281,6 @@ public class ProcessCanonicalEditPolicy extends CanonicalEditPolicy {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
 				result.addAll(SimplePDLDiagramUpdater
 						.getRessourceDefinition_2001ContainedLinks(view));
-			}
-			if (!domain2NotationMap.containsKey(view.getElement())
-					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$
-				domain2NotationMap.put(view.getElement(), view);
-			}
-			break;
-		}
-		case GuidanceEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(SimplePDLDiagramUpdater
-						.getGuidance_2004ContainedLinks(view));
 			}
 			if (!domain2NotationMap.containsKey(view.getElement())
 					|| view.getEAnnotation("Shortcut") == null) { //$NON-NLS-1$

@@ -1,4 +1,6 @@
 process exemple {
+	min_time 20
+	max_time 50
 	wd Conception min 10 max 16
 	wd RedactionDoc min 8 max 12
 	wd Development min 12 max 14

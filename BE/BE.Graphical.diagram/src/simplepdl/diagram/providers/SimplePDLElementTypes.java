@@ -190,14 +190,14 @@ public class SimplePDLElementTypes {
 
 			elements.put(Process_1000, SimplepdlPackage.eINSTANCE.getProcess());
 
+			elements.put(Guidance_2004,
+					SimplepdlPackage.eINSTANCE.getGuidance());
+
 			elements.put(WorkDefinition_2003,
 					SimplepdlPackage.eINSTANCE.getWorkDefinition());
 
 			elements.put(RessourceDefinition_2001,
 					SimplepdlPackage.eINSTANCE.getRessourceDefinition());
-
-			elements.put(Guidance_2004,
-					SimplepdlPackage.eINSTANCE.getGuidance());
 
 			elements.put(RessourceInstance_4001,
 					SimplepdlPackage.eINSTANCE.getRessourceInstance());
@@ -222,9 +222,9 @@ public class SimplePDLElementTypes {
 		if (KNOWN_ELEMENT_TYPES == null) {
 			KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
 			KNOWN_ELEMENT_TYPES.add(Process_1000);
+			KNOWN_ELEMENT_TYPES.add(Guidance_2004);
 			KNOWN_ELEMENT_TYPES.add(WorkDefinition_2003);
 			KNOWN_ELEMENT_TYPES.add(RessourceDefinition_2001);
-			KNOWN_ELEMENT_TYPES.add(Guidance_2004);
 			KNOWN_ELEMENT_TYPES.add(RessourceInstance_4001);
 			KNOWN_ELEMENT_TYPES.add(WorkSequence_4002);
 		}
@@ -238,12 +238,12 @@ public class SimplePDLElementTypes {
 		switch (visualID) {
 		case ProcessEditPart.VISUAL_ID:
 			return Process_1000;
+		case GuidanceEditPart.VISUAL_ID:
+			return Guidance_2004;
 		case WorkDefinitionEditPart.VISUAL_ID:
 			return WorkDefinition_2003;
 		case RessourceDefinitionEditPart.VISUAL_ID:
 			return RessourceDefinition_2001;
-		case GuidanceEditPart.VISUAL_ID:
-			return Guidance_2004;
 		case RessourceInstanceEditPart.VISUAL_ID:
 			return RessourceInstance_4001;
 		case WorkSequenceEditPart.VISUAL_ID:

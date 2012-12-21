@@ -29,6 +29,8 @@ import simplepdl.SimplepdlPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link simplepdl.impl.ProcessImpl#getName <em>Name</em>}</li>
+ *   <li>{@link simplepdl.impl.ProcessImpl#getMin_time <em>Min time</em>}</li>
+ *   <li>{@link simplepdl.impl.ProcessImpl#getMax_time <em>Max time</em>}</li>
  *   <li>{@link simplepdl.impl.ProcessImpl#getProcessElements <em>Process Elements</em>}</li>
  * </ul>
  * </p>
@@ -55,6 +57,46 @@ public class ProcessImpl extends EObjectImpl implements simplepdl.Process {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMin_time() <em>Min time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMin_time()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MIN_TIME_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMin_time() <em>Min time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMin_time()
+	 * @generated
+	 * @ordered
+	 */
+	protected int min_time = MIN_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMax_time() <em>Max time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMax_time()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MAX_TIME_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMax_time() <em>Max time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMax_time()
+	 * @generated
+	 * @ordered
+	 */
+	protected int max_time = MAX_TIME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getProcessElements() <em>Process Elements</em>}' containment reference list.
@@ -111,6 +153,48 @@ public class ProcessImpl extends EObjectImpl implements simplepdl.Process {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getMin_time() {
+		return min_time;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMin_time(int newMin_time) {
+		int oldMin_time = min_time;
+		min_time = newMin_time;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimplepdlPackage.PROCESS__MIN_TIME, oldMin_time, min_time));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getMax_time() {
+		return max_time;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMax_time(int newMax_time) {
+		int oldMax_time = max_time;
+		max_time = newMax_time;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimplepdlPackage.PROCESS__MAX_TIME, oldMax_time, max_time));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<ProcessElement> getProcessElements() {
 		if (processElements == null) {
 			processElements = new EObjectContainmentEList<ProcessElement>(ProcessElement.class, this, SimplepdlPackage.PROCESS__PROCESS_ELEMENTS);
@@ -142,6 +226,10 @@ public class ProcessImpl extends EObjectImpl implements simplepdl.Process {
 		switch (featureID) {
 			case SimplepdlPackage.PROCESS__NAME:
 				return getName();
+			case SimplepdlPackage.PROCESS__MIN_TIME:
+				return getMin_time();
+			case SimplepdlPackage.PROCESS__MAX_TIME:
+				return getMax_time();
 			case SimplepdlPackage.PROCESS__PROCESS_ELEMENTS:
 				return getProcessElements();
 		}
@@ -159,6 +247,12 @@ public class ProcessImpl extends EObjectImpl implements simplepdl.Process {
 		switch (featureID) {
 			case SimplepdlPackage.PROCESS__NAME:
 				setName((String)newValue);
+				return;
+			case SimplepdlPackage.PROCESS__MIN_TIME:
+				setMin_time((Integer)newValue);
+				return;
+			case SimplepdlPackage.PROCESS__MAX_TIME:
+				setMax_time((Integer)newValue);
 				return;
 			case SimplepdlPackage.PROCESS__PROCESS_ELEMENTS:
 				getProcessElements().clear();
@@ -179,6 +273,12 @@ public class ProcessImpl extends EObjectImpl implements simplepdl.Process {
 			case SimplepdlPackage.PROCESS__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case SimplepdlPackage.PROCESS__MIN_TIME:
+				setMin_time(MIN_TIME_EDEFAULT);
+				return;
+			case SimplepdlPackage.PROCESS__MAX_TIME:
+				setMax_time(MAX_TIME_EDEFAULT);
+				return;
 			case SimplepdlPackage.PROCESS__PROCESS_ELEMENTS:
 				getProcessElements().clear();
 				return;
@@ -196,6 +296,10 @@ public class ProcessImpl extends EObjectImpl implements simplepdl.Process {
 		switch (featureID) {
 			case SimplepdlPackage.PROCESS__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case SimplepdlPackage.PROCESS__MIN_TIME:
+				return min_time != MIN_TIME_EDEFAULT;
+			case SimplepdlPackage.PROCESS__MAX_TIME:
+				return max_time != MAX_TIME_EDEFAULT;
 			case SimplepdlPackage.PROCESS__PROCESS_ELEMENTS:
 				return processElements != null && !processElements.isEmpty();
 		}
@@ -214,6 +318,10 @@ public class ProcessImpl extends EObjectImpl implements simplepdl.Process {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", min_time: ");
+		result.append(min_time);
+		result.append(", max_time: ");
+		result.append(max_time);
 		result.append(')');
 		return result.toString();
 	}

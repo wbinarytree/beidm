@@ -63,6 +63,8 @@ public class ProcessItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addMin_timePropertyDescriptor(object);
+			addMax_timePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -85,6 +87,50 @@ public class ProcessItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Min time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMin_timePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Process_min_time_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Process_min_time_feature", "_UI_Process_type"),
+				 SimplepdlPackage.Literals.PROCESS__MIN_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Max time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMax_timePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Process_max_time_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Process_max_time_feature", "_UI_Process_type"),
+				 SimplepdlPackage.Literals.PROCESS__MAX_TIME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -157,6 +203,8 @@ public class ProcessItemProvider
 
 		switch (notification.getFeatureID(simplepdl.Process.class)) {
 			case SimplepdlPackage.PROCESS__NAME:
+			case SimplepdlPackage.PROCESS__MIN_TIME:
+			case SimplepdlPackage.PROCESS__MAX_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case SimplepdlPackage.PROCESS__PROCESS_ELEMENTS:

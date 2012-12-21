@@ -85,12 +85,12 @@ public class SimplePDLParserProvider extends AbstractProvider implements
 	 */
 	protected IParser getParser(int visualID) {
 		switch (visualID) {
+		case GuidanceTextEditPart.VISUAL_ID:
+			return getGuidanceText_5004Parser();
 		case WorkDefinitionNameEditPart.VISUAL_ID:
 			return getWorkDefinitionName_5003Parser();
 		case RessourceDefinitionNameEditPart.VISUAL_ID:
 			return getRessourceDefinitionName_5001Parser();
-		case GuidanceTextEditPart.VISUAL_ID:
-			return getGuidanceText_5004Parser();
 		}
 		return null;
 	}
