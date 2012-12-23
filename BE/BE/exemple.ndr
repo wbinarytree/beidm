@@ -1,0 +1,202 @@
+p 1000.0 30.0 exemple_obs_early 0 n
+p 700.0 30.0 exemple_ready 1 n
+p 1000.0 130.0 exemple_obs_not_early 0 n
+p 1200.0 130.0 exemple_obs_late 0 n
+t 1100.0 190.0 exemple_obs_tontime s 0 0 n {} ne
+p 850.0 970.0 exemple_terminated 0 n
+t 850.0 890.0 exemple_terminate 0 0 n
+p 850.0 790.0 exemple_finished 0 n
+p 1200.0 190.0 exemple_obs_ontime 0 n
+p 800.0 130.0 exemple_started 0 n
+t 700.0 130.0 exemple_start s 0 w n {} ne
+p 800.0 30.0 exemple_obs_ready 0 n
+p 600.0 130.0 Machine 4 n
+t 1410.0 590.0 Developpement_finish 0 w n
+p 1410.0 690.0 Developpement_finished 0 n
+p 1410.0 490.0 Developpement_started 0 n
+p 1310.0 490.0 Developpeur 2 n
+p 1610.0 690.0 Developpement_obs_ontime 0 n
+t 1510.0 690.0 Developpement_obs_tontime s 0 0 n {} ne
+t 1510.0 590.0 Developpement_obs_tearly s 0 0 n {} ne
+p 1610.0 590.0 Developpement_obs_early 0 n
+t 1410.0 390.0 Developpement_start 0 w n
+t 1510.0 490.0 Developpement_obs_tlate s 2 2 n {} ne
+p 1610.0 490.0 Developpement_obs_late 0 n
+p 1610.0 390.0 Developpement_obs_not_early 0 n
+t 1510.0 390.0 Developpement_obs_not_tearly s 12 12 n {} ne
+p 1410.0 290.0 Developpement_ready 0 n
+p 1210.0 490.0 RedactionTests_obs_late 0 n
+t 1110.0 490.0 RedactionTests_obs_tlate s 2 2 n {} ne
+t 1110.0 390.0 RedactionTests_obs_not_tearly s 10 10 n {} ne
+p 1210.0 390.0 RedactionTests_obs_not_early 0 n
+t 1110.0 690.0 RedactionTests_obs_tontime s 0 0 n {} ne
+p 1210.0 690.0 RedactionTests_obs_ontime 0 n
+p 1210.0 590.0 RedactionTests_obs_early 0 n
+p 910.0 490.0 Testeur 2 n
+p 1010.0 490.0 RedactionTests_started 0 n
+t 1010.0 390.0 RedactionTests_start 0 w n
+t 1010.0 590.0 RedactionTests_finish 0 w n
+p 1010.0 690.0 RedactionTests_finished 0 n
+t 1110.0 590.0 RedactionTests_obs_tearly s 0 0 n {} ne
+p 1610.0 290.0 Developpement_obs_ready 0 n
+p 1210.0 290.0 RedactionTests_obs_ready 0 n
+p 1010.0 290.0 RedactionTests_ready 0 n
+p 470.0 690.0 RedactionDoc_obs_ontime 0 n
+t 570.0 690.0 RedactionDoc_obs_tontime s 0 0 n {} ne
+p 470.0 390.0 RedactionDoc_obs_not_early 0 n
+p 670.0 690.0 RedactionDoc_finished 0 n
+p 470.0 490.0 RedactionDoc_obs_late 0 n
+t 570.0 490.0 RedactionDoc_obs_tlate s 4 4 n {} ne
+t 570.0 390.0 RedactionDoc_obs_not_tearly s 8 8 n {} ne
+p 470.0 290.0 RedactionDoc_obs_ready 0 n
+t 570.0 590.0 RedactionDoc_obs_tearly s 0 0 n {} ne
+p 470.0 590.0 RedactionDoc_obs_early 0 n
+p 670.0 490.0 RedactionDoc_started 0 n
+t 670.0 390.0 RedactionDoc_start 0 w n
+p 670.0 290.0 RedactionDoc_ready 0 n
+t 670.0 590.0 RedactionDoc_finish 0 w n
+p 270.0 290.0 Conception_ready 0 n
+t 270.0 590.0 Conception_finish 0 w n
+t 270.0 390.0 Conception_start 0 w n
+p 270.0 690.0 Conception_finished 0 n
+p 270.0 490.0 Conception_started 0 n
+p 370.0 330.0 Conception_hasStarted 0 n
+p 370.0 490.0 Concepteur 3 n
+t 170.0 390.0 Conception_obs_not_tearly s 10 10 n {} ne
+t 170.0 490.0 Conception_obs_tlate s 6 6 n {} ne
+t 170.0 590.0 Conception_obs_tearly s 0 0 n {} ne
+t 170.0 690.0 Conception_obs_tontime s 0 0 n {} ne
+p 70.0 690.0 Conception_obs_ontime 0 n
+p 70.0 590.0 Conception_obs_early 0 n
+p 70.0 490.0 Conception_obs_late 0 n
+p 70.0 390.0 Conception_obs_not_early 0 n
+p 70.0 290.0 Conception_obs_ready 0 n
+p 770.0 490.0 Redacteur 1 n
+p 770.0 330.0 RedactionDoc_hasStarted 0 n
+p 910.0 330.0 RedactionTests_hasStarted 0 n
+p 1310.0 330.0 Developpement_hasStarted 0 n
+t 900.0 30.0 exemple_obs_tearly s 0 0 n {} ne
+t 900.0 130.0 exemple_obs_not_tearly s 20 20 n {} ne
+t 1100.0 130.0 exemple_obs_tlate s 30 30 n {} ne
+e exemple_ready exemple_start 1 n
+e exemple_start exemple_obs_ready 1 n
+e exemple_start exemple_started 1 n
+e exemple_start RedactionTests_ready 1 n
+e exemple_start Developpement_ready 1 n
+e exemple_start RedactionDoc_ready 1 n
+e exemple_start Conception_ready 1 n
+e exemple_started exemple_terminate 1 n
+e exemple_finished exemple_terminate 4 n
+e exemple_terminate exemple_terminated 1 n
+e exemple_obs_ready exemple_obs_tearly 1 n
+e exemple_terminated exemple_obs_tearly ?1 n
+e exemple_obs_tearly exemple_obs_early 1 n
+e exemple_obs_ready exemple_obs_not_tearly 1 n
+e exemple_started exemple_obs_not_tearly ?1 n
+e exemple_obs_not_tearly exemple_obs_not_early 1 n
+e exemple_obs_not_early exemple_obs_tlate 1 n
+e exemple_started exemple_obs_tlate ?1 n
+e exemple_obs_tlate exemple_obs_late 1 n
+e exemple_obs_not_early exemple_obs_tontime 1 n
+e exemple_terminated exemple_obs_tontime ?1 n
+e exemple_obs_tontime exemple_obs_ontime 1 n
+e Machine Conception_start 2 n
+e Concepteur Conception_start 2 n
+e Conception_ready Conception_start 1 n
+e Conception_start Conception_obs_ready 1 n
+e Conception_start Conception_hasStarted 1 n
+e Conception_start Conception_started 1 n
+e Conception_started Conception_finish 1 n
+e Conception_finish Machine 2 n
+e Conception_finish Concepteur 2 n
+e Conception_finish exemple_finished 1 n
+e Conception_finish Conception_finished 1 n
+e Conception_obs_ready Conception_obs_tearly 1 n
+e Conception_finished Conception_obs_tearly ?1 n
+e Conception_obs_tearly Conception_obs_early 1 n
+e Conception_obs_ready Conception_obs_not_tearly 1 n
+e Conception_started Conception_obs_not_tearly ?1 n
+e Conception_obs_not_tearly Conception_obs_not_early 1 n
+e Conception_obs_not_early Conception_obs_tlate 1 n
+e Conception_started Conception_obs_tlate ?1 n
+e Conception_obs_tlate Conception_obs_late 1 n
+e Conception_obs_not_early Conception_obs_tontime 1 n
+e Conception_finished Conception_obs_tontime ?1 n
+e Conception_obs_tontime Conception_obs_ontime 1 n
+e Machine RedactionDoc_start 1 n
+e Redacteur RedactionDoc_start 1 n
+e RedactionDoc_ready RedactionDoc_start 1 n
+e Conception_hasStarted RedactionDoc_start ?1 n
+e RedactionDoc_start RedactionDoc_obs_ready 1 n
+e RedactionDoc_start RedactionDoc_hasStarted 1 n
+e RedactionDoc_start RedactionDoc_started 1 n
+e RedactionDoc_started RedactionDoc_finish 1 n
+e Conception_finished RedactionDoc_finish ?1 n
+e RedactionDoc_finish Machine 1 n
+e RedactionDoc_finish Redacteur 1 n
+e RedactionDoc_finish exemple_finished 1 n
+e RedactionDoc_finish RedactionDoc_finished 1 n
+e RedactionDoc_obs_ready RedactionDoc_obs_tearly 1 n
+e RedactionDoc_finished RedactionDoc_obs_tearly ?1 n
+e RedactionDoc_obs_tearly RedactionDoc_obs_early 1 n
+e RedactionDoc_obs_ready RedactionDoc_obs_not_tearly 1 n
+e RedactionDoc_started RedactionDoc_obs_not_tearly ?1 n
+e RedactionDoc_obs_not_tearly RedactionDoc_obs_not_early 1 n
+e RedactionDoc_obs_not_early RedactionDoc_obs_tlate 1 n
+e RedactionDoc_started RedactionDoc_obs_tlate ?1 n
+e RedactionDoc_obs_tlate RedactionDoc_obs_late 1 n
+e RedactionDoc_obs_not_early RedactionDoc_obs_tontime 1 n
+e RedactionDoc_finished RedactionDoc_obs_tontime ?1 n
+e RedactionDoc_obs_tontime RedactionDoc_obs_ontime 1 n
+e Machine Developpement_start 3 n
+e Developpeur Developpement_start 2 s
+e Developpement_ready Developpement_start 1 n
+e Conception_finished Developpement_start ?1 n
+e Developpement_start Developpement_obs_ready 1 n
+e Developpement_start Developpement_hasStarted 1 n
+e Developpement_start Developpement_started 1 n
+e Developpement_started Developpement_finish 1 n
+e Developpement_finish Machine 3 n
+e Developpement_finish Developpeur 2 e
+e Developpement_finish exemple_finished 1 n
+e Developpement_finish Developpement_finished 1 n
+e Developpement_obs_ready Developpement_obs_tearly 1 n
+e Developpement_finished Developpement_obs_tearly ?1 n
+e Developpement_obs_tearly Developpement_obs_early 1 n
+e Developpement_obs_ready Developpement_obs_not_tearly 1 n
+e Developpement_started Developpement_obs_not_tearly ?1 n
+e Developpement_obs_not_tearly Developpement_obs_not_early 1 n
+e Developpement_obs_not_early Developpement_obs_tlate 1 n
+e Developpement_started Developpement_obs_tlate ?1 n
+e Developpement_obs_tlate Developpement_obs_late 1 n
+e Developpement_obs_not_early Developpement_obs_tontime 1 n
+e Developpement_finished Developpement_obs_tontime ?1 n
+e Developpement_obs_tontime Developpement_obs_ontime 1 n
+e Machine RedactionTests_start 2 n
+e Testeur RedactionTests_start 1 n
+e RedactionTests_ready RedactionTests_start 1 n
+e Conception_hasStarted RedactionTests_start ?1 n
+e RedactionTests_start RedactionTests_obs_ready 1 n
+e RedactionTests_start RedactionTests_hasStarted 1 n
+e RedactionTests_start RedactionTests_started 1 n
+e RedactionTests_started RedactionTests_finish 1 n
+e Developpement_finished RedactionTests_finish ?1 n
+e RedactionTests_finish Machine 2 n
+e RedactionTests_finish Testeur 1 n
+e RedactionTests_finish exemple_finished 1 n
+e RedactionTests_finish RedactionTests_finished 1 n
+e RedactionTests_obs_ready RedactionTests_obs_tearly 1 n
+e RedactionTests_finished RedactionTests_obs_tearly ?1 n
+e RedactionTests_obs_tearly RedactionTests_obs_early 1 n
+e RedactionTests_obs_ready RedactionTests_obs_not_tearly 1 n
+e RedactionTests_started RedactionTests_obs_not_tearly ?1 n
+e RedactionTests_obs_not_tearly RedactionTests_obs_not_early 1 n
+e RedactionTests_obs_not_early RedactionTests_obs_tlate 1 n
+e RedactionTests_started RedactionTests_obs_tlate ?1 n
+e RedactionTests_obs_tlate RedactionTests_obs_late 1 n
+e RedactionTests_obs_not_early RedactionTests_obs_tontime 1 n
+e RedactionTests_finished RedactionTests_obs_tontime ?1 n
+e RedactionTests_obs_tontime RedactionTests_obs_ontime 1 n
+h exemple small
+
+
