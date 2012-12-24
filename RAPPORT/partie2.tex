@@ -2,7 +2,57 @@ Nous avons implémenté deux extensions supplémentaires qui apportent des fonct
 
 \section{Gestion plus fine des ressources}
 
+Il s'agit dans cette extension de permettre qu'une activité en cours d'exécution puisse être interrompue puis reprendre le cours de son exécution. Une telle interruption doit libérer les ressources utilisées par l'activité en question qui deviennent alors disponibles pour une autre activité. Pour une activité interrompue, sa reprise doit être permise à condition que les ressources dont il dépend soient disponibles.\\
+Pour cette extension, il n'est pas nécessaire de modifier la structure du méta-modèle SimplePDL, on agit principalement sur le réseau de Petri résultant de la transformation du modèle SimplePDL. Nous allons donc adapter la requête de transformation SimplePDL vers PetriNet afin de permettre l'interruption et la reprise (soumise à condition) d'une activité.
+
 \subsection{Transformation SimplePDL vers PetriNet}
+
+Il est nécessaire de modifier le réseau de Petri mais tout en veillant à toujours respecter la spécification stipulant qu'une activité est soit :
+\begin{itemize}
+\item non commencée - \textit{Ready}
+\item en cours - \textit{Started}
+\item terminée - \textit{Finished}\\
+\end{itemize}
+
+D'autre part, il est préférable de ne pas altérer le fonctionnement général du réseau de Petri engendré par la requête conçue dans la première partie afin de ne pas risquer une regression au niveau des fonctionnalités, particulièrement au niveau des observateurs associés à chaque activité. C'est pourquoi nous avons fait le choix de rajouter des places représentant deux sous états de l'état en cours d'exécution \textit{Started} :
+\begin{itemize}
+\item en cours d'exécution - \textit{Running}
+\item interrompue - \textit{Interrupted}
+\end{itemize}
+Deux nouvelles transitions sont nécessaire pour permettre à une activité d'osciller entre ces deux sous états :
+\begin{itemize}
+\item interrompre - \textit{Interrupt} : \textit{Running} vers \textit{Interrupted}
+\item reprendre - \textit{Resume} : \textit{Interrupted} vers \textit{Running}
+\end{itemize}
+On remarque que ces nouveaux sous états ne changent rien au fonctionnement des observateurs mis en place dans la première partie, cela permet de répondre à l'exigence qui précise que quelque soit le sous état dans lequel on se trouve (\textit{Running} ou \textit{Interrupted}), le temps continue à être décompté.\\
+
+Afin de ne pas perturber le système de gestion des ressources initial, il est nécessaire de préciser quelques spécifications supplémentaires :
+\begin{itemize}
+\item Une activité qui entre dans l'état \textit{Started}, entre par défaut dans le sous état \textit{Running}
+\item Pour pouvoir traverser la transition \textit{Finish} amenant à l'état \textit{Finished}, il faut évidemment être dans l'état \textit{Started} et dans le sous état \textit{Running}
+\end{itemize}
+
+\subsection{Exemple d'exécution}
+
+Dans cet exemple d'exécution, on vérifie que :
+\begin{itemize}
+\item si on est dans le sous état \textit{Running}, les ressources sont prises et que l'on peut accéder aux transitions \textit{Finish} et \textit{Interrupt}
+\item si on est dans le sous état \textit{Interrupted}, les ressources sont libérées et que l'on peut accéder à la transition \textit{Resume} et pas à la transition \textit{Finish}\\
+\end{itemize}
+
+Vérifions ces propriétés, avec une exécution en cinq phases sur une même activité, correspondant aux cinq états suivants :
+\begin{itemize}
+\item \textit{Ready}
+\item \textit{Started} \textit{Running}
+\item \textit{Started} \textit{Interrupted}
+\item \textit{Started} \textit{Running}
+\item \textit{Finihed}
+\end{itemize}
+
+
+\subsection{Contraintes LTL}
+
+Vérifier que si le processus est en \textit{Started}, toutes ses activités sont soit en \textit{Ready}, soit en \textit{Started}, soit en \textit{Finished}.
 
 \section{Ressources alternatives}
 
