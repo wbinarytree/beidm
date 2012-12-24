@@ -91,26 +91,42 @@ Mathieu Othacéhé \texttt{<othacehe@etud.insa-toulouse.fr>}}
 
 \chapter{Introduction}
 
-\chapter{Partie 1}
+Dans ce BE, il s'agit d'utiliser les outils de méta-modélisation et de vérification des modèles afin de modéliser des processus déclinés en activités dépendant de ressources et évoluant dans le temps. Différents outils mis à notre disposition nous permettent réaliser ces opérations qui sont décrites dans ce rapport :
+\begin{itemize}
+\item Eclipse
+\begin{itemize}
+\item Ecore
+\item ATL
+\item Xtext
+\item GMF
+\item Epsilon
+\end{itemize}
+\item Tina
+\begin{itemize}
+\item Selt
+\end{itemize}
+\end{itemize}
 
-\section{T1}
+\chapter{Partie 1 : Intégration du temps et des ressources}
 
-Il s'agit dans cette première section de prendre en compte les ressources et le temps dans le métamodèle.
-On reprend donc le fichier SimplePDL.ecore, et l'on ajoute de nouveaux éléments.
+\section{T1 : Définition du méta-modèle}
+
+Il s'agit dans cette première section de prendre en compte les ressources et le temps dans le méta-modèle SimplePDL.
+On reprend donc le fichier SimplePDL.ecore définissant le méta-modèle, et l'on y ajoute de nouveaux éléments.
 
 \subsection{Ajout des ressources}
 
 Pour la gestion des ressources :\\
 
 On rajoute deux nouvelles classes : RessourceDefinition et RessourceInstance.
-La classe RessourceDefinition sert à définir les différentes ressources et leur nombre. Par exemple, si l'on dispose de 4 ressources de type Machine,
+La classe RessourceDefinition sert à définir les différentes ressources et leur nombre total disponible dans le système. Par exemple, si l'on dispose de 4 ressources de type Machine,
 on va alors déclarer dans le fichier modèle simplepdl une RessourceDefinition, avec un attribut number égal à 4.\\
 
 La classe RessourceInstance permet d'exprimer le fait qu'une activité va devoir utiliser une certaine quantité de ressources pour fonctionner.
 Elle possède un lien vers une RessourceDefinition exprimant le type de la ressource ainsi qu'un lien vers l'activité en question.
 Elle doit aussi posséder un attribut entier indiquant le nombre de ressources nécéssaires à l'activité.\\
 
-Si l'on affiche le métamodèle sous forme textuelle (améliorée), on a donc :\\
+Si l'on affiche le méta-modèle sous forme textuelle (améliorée), on a donc :\\
 
 \begin{figure}[!h] 
 \begin{center}
@@ -120,7 +136,7 @@ Si l'on affiche le métamodèle sous forme textuelle (améliorée), on a donc :\
 \end{center}
 \end{figure} 
 
-On peut également afficher le métamodèle sous forme graphique Ecorediag :\\
+On peut également afficher le méta-modèle sous forme graphique Ecorediag :\\
 
 \begin{figure}[!h] 
 \begin{center}
@@ -130,13 +146,13 @@ On peut également afficher le métamodèle sous forme graphique Ecorediag :\\
 \end{center}
 \end{figure} 
 
-On se retrouve dans une situation assez symétrique avec les classes WorkDefinition et WorkSequence. En effet, ces deux classe héritent toutes deux de ProcessElement et une WorkSequence constitue un lien entre deux WorkDefinition.\\
+On se retrouve dans une situation assez symétrique avec les classes WorkDefinition et WorkSequence. En effet, ces deux classes héritent toutes deux de ProcessElement et une WorkSequence constitue un lien entre deux WorkDefinition.\\
 
-Avec RessourceInstance et RessourceDefinition, une RessourceInstance consituera un lien entre une RessourceDefinition et une Activité.
+Pour la modélisation des ressources disponibles et de leur utilisation par des activités, les classes RessourceDefinition et RessourceInstance héritent également de ProcessElement et une RessourceInstance représentera le lien entre une RessourceDefinition et une WorkDefinition.
 
 \subsection{Ajout du temps}
 
-L'ajout du temps est plus aisé (à ce niveau la en tout cas). Il suffit d'ajouter des attributs temps\_min et temps\_max aussi bien au niveau du Processus que de la WorkDefinition. Le fichier Ecore modifié est le suivant :\\
+L'ajout du temps est plus aisé (à ce niveau là en tout cas). Il suffit d'ajouter des attributs temps\_min et temps\_max aussi bien au niveau du Processus que de la WorkDefinition. Le fichier Ecore modifié est le suivant :\\
 
 \begin{figure}[!h] 
 \begin{center}
@@ -150,17 +166,60 @@ A présent que le fichier Ecore est mis à jour par rapport aux nouvelles spéci
 
 \newpage
 
-\section{T2}
+\section{T2 : Syntaxe concrète graphique}
 
-Il s'agit ici d'adapter l’éditeur graphique SimplePDL pour permettre de saisir graphiquement les ressources
-disponibles et l’allocation des ressources nécessaires à chaque activité.
+Il s'agit ici d'adapter l’éditeur graphique SimplePDL créé en TP pour permettre de saisir graphiquement les ressources disponibles et l’allocation des ressources nécessaires à chaque activité. On doit également pouvoir spécifier les propriétés temporelles de chaque activité et du processus global.
 
-\ldots \ldots \ldots \ldots
+Pour mettre en oeuvre cet outil graphique on utilise le plugin GMF d'Eclipse qui permet de définir les différentes composantes de l'éditeur à partir du méta-modèle Ecore défini précédemment que l'on considère ici comme une syntaxe abstraite. Après avoir paramétré les composants, l'éditeur graphique permet de construire des processus en définissant des activités, des relations entre elles, des ressources et leurs relations avec les activités. On peut donc reconstruire le modèle suivant, correspondant à l'exemple décrit dans le sujet :
 
-\section{T3}
+\begin{figure}[!h] 
+\begin{center}
+\includegraphics[width=15cm]{Capture-6.png}
+\caption{Modèle défini dans le sujet} 
+\label{img1} 
+\end{center}
+\end{figure} 
 
-Nous devons donner une syntaxe concrète textuelle de SimplePDL pour prendre en compte les ressources
-et le temps et l’outiller avec xText. On va donc reprendre la grammaire xText élaborée lors des séances précédentes.
+\begin{figure}[!h] 
+\begin{center}
+\includegraphics[width=10cm]{Capture-8.png}
+\caption{Exemple d'utilisation de l'éditeur graphique engendré} 
+\label{img1} 
+\end{center}
+\end{figure} 
+
+Les propriétés telles que :
+\begin{itemize}
+\item le nombre de ressources des éléments de type RessourceDefinition
+\item le nombre des éléménets de type RessourceInstance
+\item le type des relations de type WorkSequence 
+\item les intervalles de temps des éléments de type WorkDefinition et Process
+\end{itemize}
+sont accessibles depuis l'onglet Propriété.
+
+\begin{figure}[!h] 
+\begin{center}
+\includegraphics[width=10cm]{Capture-10.png}
+\caption{Propriétés d'une RessourceInstance} 
+\label{img1} 
+\end{center}
+\end{figure} 
+
+Le modèle généré graphiquement peut être également représenté sous forme arborescente pour être éventuellement exporté ensuite vers un format générique tel que XMI :
+
+\begin{figure}[!h] 
+\begin{center}
+\includegraphics[width=10cm]{Capture-9.png}
+\caption{Modèle sous forme arborescente généré par l'éditeur graphique} 
+\label{img1} 
+\end{center}
+\end{figure} 
+
+\newpage
+
+\section{T3 : Syntaxe concrète textuelle}
+
+Nous devons donner une syntaxe concrète textuelle de SimplePDL pour prendre en compte les ressources et le temps et l’outiller avec xText. On va donc reprendre la grammaire xText élaborée lors des séances précédentes.
 
 On rajoute ces lignes dans le fichier xText :\\
 
@@ -182,8 +241,7 @@ RessourceInstance returns RessourceInstance:
 On définit ainsi qu'une RessourceDefinition possède un nom et un chiffre indiquant sa quantité. Une RessourceInstance possède un type, qui n'est autre qu'une WorkDefinition.
 Elle possède aussi une activité de type WorkDefinition et un nombre d'instances entier.\\
 
-Il faut aussi modifier la ligne ProcessElement pour indique que RessourceDefinition et RessourceInstance en héritent.
-
+Il faut aussi modifier la ligne ProcessElement pour indiquer que l'on peut déclarer des éléments de type RessourceDefinition et des RessourceInstance.
 
 \begin{verbatim}
 ProcessElement returns ProcessElement:
@@ -216,7 +274,7 @@ Process returns Process:
 	;
 \end{verbatim}
 
-On peut à présent créer un fichier s'appuyant sur la grammaire crée.
+On peut à présent créer un fichier s'appuyant sur la grammaire créée et définir un modèle de processus, notamment celui de l'exemple de la partie précédente :
 
 \begin{verbatim}
 process exemple {
@@ -247,19 +305,19 @@ process exemple {
 }
 \end{verbatim}
 
-Ce fichier de modèle correspond à l'image suivante :\\
+A partir du modèle décrit textuellement, on peut l'exporter vers un format générique tel que XMI :
 
 \begin{figure}[!h] 
 \begin{center}
-\includegraphics[width=15cm]{Capture-6.png}
-\caption{Modèle utilisé dans le fichier dont la grammaire est définie par xText} 
+\includegraphics[width=10cm]{Capture-12.png}
+\caption{Exemple au format XMI sous forme arborescente} 
 \label{img1} 
 \end{center}
 \end{figure} 
 
 \newpage
 
-\section{T4}
+\section{T4 : Contraintes OCL sur le méta-modèle SimplePDL}
 
 On complète ici les contraintes OCL pour capturer les contraintes qui n’ont pu l’être par le métamodèle.
 
@@ -332,7 +390,7 @@ inv timeCheck1:
 		false
 \end{verbatim}
 
-\section{T5}
+\section{T5 : Transformation SimplePDL vers PetriNet}
 
 Il faut à présent engendrer une nouvelle transformation SimplePdl to Petrinet. En effet, on doit reporter les changements réalisés dans méta-modèle SimplePdl, vers le méta-modèle PetriNet.\\
 
@@ -398,7 +456,7 @@ Le code à fournir pour mettre en place cet observateur est assez long. Il n'est
 
 \newpage
 
-\section{T6}
+\section{T6 : Validation de la transformation SimplePDL vers PetriNet}
 
 L'étape de validation consiste à appliquer la transformation précédente et à l'appliquer à un exemple. Prenons le fichier de modèle suivant qui reprend l'exemple du sujet.
 
@@ -413,13 +471,13 @@ L'étape de validation consiste à appliquer la transformation précédente et �
 Nous obtenons un fichier .PetriNet correspondant bien à ce qui était attendu. Il est valide par rapport au méta-modèle PetriNet.
 On peut donc valider cette transformation et attaquer la partie PetriNet2Tina.
 
-\section{T7}
+\section{T7 : Transformation PetriNet vers Tina}
 
 Le méta-modèle PetriNet n'ayant pas évolué, il n'y a pas non plus de raisons de faire évoluer la transformation PetriNet2Tina. 
-Nous avons juste du apporter quelques retouches par rapport à la version des TP. En effet, nous avions considéré que le temps associé par défaut à une transition est pas défaut
+Nous avons juste du apporter quelques retouches par rapport à la version des TP. En effet, nous avions considéré que le temps associé par défaut à une transition est par défaut
 [0,0] sous tina. Pourtant, il s'agit d'un cas particulier puisque nous voulons que par défaut nos transitions soient de type [0,w[.\\
 
-Dans cette transformation, on doit donc s'assurer que si temps\_max = -1 (signifie w car temps\_max forcément entier), alors le fichier de sortie comportera un intervalle terminé par w[.\\
+Dans cette transformation, on doit donc s'assurer que dans le modèle PetriNet si temps\_max = -1 (signifie w dans la syntaxe Tina car temps\_max forcément entier), alors le fichier de sortie comportera un intervalle terminé par w[.\\
 
 \begin{verbatim}
 -- build a Tina net file from a Petri net model
@@ -489,10 +547,10 @@ def: asTina(isSource: Boolean): String =
 ;
 \end{verbatim}
 
-\section{T8}
+\section{T8 : Contraintes OCL sur le méta-modèle PetriNet}
 ??
 
-\section{T9}
+\section{T9 : Propriétés LTL}
 
 Pour vérifier la terminaison d'un processus, il s'agit d'écrire plusieurs requètes LTL.
 Soit l'opérateur finished qui correspond au ET logique entre toutes les places de fin de chaque activité, on a les propriétés suivantes :\\
@@ -507,12 +565,7 @@ Il est possible que le réseau soit mort, doit être Vrai.
 
 - <> finished;
 
-
-\section{T10}
-TO BE DONE
-
-
-\chapter{Partie 2}
+\chapter{Partie 2 : Extensions supplémentaires}
 
 \input{partie2}
 \end{document}   
