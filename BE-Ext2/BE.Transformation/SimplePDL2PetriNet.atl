@@ -288,6 +288,70 @@ rule WorkDefinition2PetriNet {
 				kind <- #normal,
 				net <- wd.getProcess()),
 				
+		-- Places de l'extension Gestion plus fine des ressources
+		p_running: petrinet!Place(
+						name <- wd.name + '_running',
+						marking <- 0,
+						net <- wd.getProcess()),
+		p_interrupted: petrinet!Place(
+						name <- wd.name + '_interrupted',
+						marking <- 0,
+						net <- wd.getProcess()),
+		
+		-- Transitions de l'extension Gestion plus fine des ressources
+		t_interrupt: petrinet!Transition(
+				name <- wd.name + '_interrupt',
+				incomings <- a_r2i,
+				outgoings <- a_i2i,
+				min_time <- 0,
+				max_time <- -1,
+				net <- wd.getProcess()),
+		t_resume: petrinet!Transition(
+				name <- wd.name + '_resume',
+				incomings <- a_i2r,
+				outgoings <- a_r2r,
+				min_time <- 0,
+				max_time <- -1,
+				net <- wd.getProcess()),
+		
+		-- Arcs de l'extension Gestion plus fine des ressources
+		a_r2i: petrinet!Arc(
+				source <- p_running,
+				target <- t_interrupt,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_i2i: petrinet!Arc(
+				source <- t_interrupt,
+				target <- p_interrupted,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_i2r: petrinet!Arc(
+				source <- p_interrupted,
+				target <- t_resume,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_r2r: petrinet!Arc(
+				source <- t_resume,
+				target <- p_running,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_s2r: petrinet!Arc(
+				source <- t_start,
+				target <- p_running,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_r2f: petrinet!Arc(
+				source <- p_running,
+				target <- t_finish,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		
 		-- Places de l'observateur de la WorkDefinition : ready, early, not_early, late, ontime
 		p_obs_started: petrinet!Place(
 						name <- wd.name + '_obs_ready',
@@ -433,7 +497,6 @@ rule WorkDefinition2PetriNet {
 					kind <- #normal,
 					weight <- 1,
 					net <- wd.getProcess())
-					
 }
 
 -- Traduire une WorkSequence en un motif sur le r�seau de Petri
@@ -486,5 +549,19 @@ rule RessourceInstance2PetriNet {
 						target <- thisModule.resolveTemp(ri.type, 'p_ressource'),
 						weight <- ri.instances,
 						kind <- #normal,
-						net <- ri.getProcess())
+						net <- ri.getProcess()),
+		
+		-- Arcs de l'extension Gestion plus fine des ressources
+		a_i2r: petrinet!Arc(
+				source <- thisModule.resolveTemp(ri.activity, 't_interrupt'),
+				target <- thisModule.resolveTemp(ri.type, 'p_ressource'),
+				weight <- ri.instances,
+				kind <- #normal,
+				net <- ri.getProcess()),
+		a_r2r: petrinet!Arc(
+				source <- thisModule.resolveTemp(ri.type, 'p_ressource'),
+				target <- thisModule.resolveTemp(ri.activity, 't_resume'),
+				weight <- ri.instances,
+				kind <- #normal,
+				net <- ri.getProcess())
 }

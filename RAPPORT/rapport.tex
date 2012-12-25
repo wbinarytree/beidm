@@ -548,24 +548,90 @@ def: asTina(isSource: Boolean): String =
 \end{verbatim}
 
 \section{T8 : Contraintes OCL sur le méta-modèle PetriNet}
-??
+Il s'agit ici de vérifier certaines propriétés fondammentales que l'on ne peut exprimer dans le méta-modèle PetriNet, c'est pourquoi l'on s'appuie sur des règles OCL qui permettent de rajouter certaines contraintes et de vérifier si les modèles instances du méta-modèle PetriNet les respectent.\\
+
+\subsection{Noms du réseau, des places et transitions}
+Comme pour le méta-modèle SimplePDL, on vérifie que les noms sont du réseau de Petri, des éléments de type \textit{Place} et de type \textit{Transitions} ne sont pas vides. On vérifie également que les noms des éléments de type \textit{Place} sont uniques, de même pour les éléments de type \textit{Transition}.
+
+\subsection{Liaison des arcs}
+Il faut vérifier qu'un élément de type \textit{Arc} lie un élément de type \textit{Place} avec un élément de type \textit{Transition}, dans un sens ou dans l'autre. Il faut donc vérifier pour chaque élément de type \textit{Arc} que l'on vérifie l'une des deux conditions suivantes:
+\begin{itemize}
+\item l'attribut \textit{source} est un élément de type \textit{Place} et l'attribut \textit{target} est un élément de type \textit{Transition}
+\item l'attribut \textit{source} est un élément de type \textit{Transition} et l'attribut \textit{target} est un élément de type \textit{Place}
+\end{itemize}
+En langage OCL, cette propriété se vérifie avec la règle suivante :
+
+\begin{verbatim}
+context Arc
+inv arcValid:
+-- la source d'un read_arc est toujours de type place et la destination de type transition
+        (self.kind = ArcKind::read_arc implies 
+                (self.source.oclIsTypeOf(Place) and self.target.oclIsTypeOf(Transition)))
+        and 
+-- la source et la destination d'un arc normal doivent etre de nature opposées 
+        (self.kind = ArcKind::normal implies 
+                (self.source.oclIsTypeOf(Place) and self.target.oclIsTypeOf(Transition)
+                or
+                self.source.oclIsTypeOf(Transition) and self.target.oclIsTypeOf(Place)))
+\end{verbatim}
+
+\subsection{Composantes temporelles des transitions}
+
+Il faut également vérifier que si elles sont toutes deux entiers positifs, la borne temporelle inférieure d'une transition doit être inférieure ou égale à la borne supérieure. On peut traduire la propriété en OCL de la manière suivante :
+
+\begin{verbatim}
+\end{verbatim}
 
 \section{T9 : Propriétés LTL}
 
-Pour vérifier la terminaison d'un processus, il s'agit d'écrire plusieurs requètes LTL.
-Soit l'opérateur finished qui correspond au ET logique entre toutes les places de fin de chaque activité, on a les propriétés suivantes :\\
+\subsection{Relation entre terminaison des activités et mort du réseau}
 
+Pour vérifier la terminaison d'un processus, il s'agit d'exécuter plusieurs requètes LTL.
+Soit l'opérateur finished qui correspond au ET logique entre toutes les places de fin de chaque activité correspondant à leur état \textit{Finished}, on a les propriétés suivantes :\\
+
+\begin{verbatim}
+# Si l'on a fini, alors le réseau est mort, doit être Vrai.
 [] (finished => dead);
-Si l'on a fini, alors le réseau est mort, doit être Vrai.
 
+# Il est possible que le réseau soit mort, doit être Vrai.
 [] <> dead;
-Il est possible que le réseau soit mort, doit être Vrai.
 
+# Si le réseau est mort, alors toutes les activités sont terminées, doit être Vrai
 [] (dead => finished);
 
+# On atteindra jamais l'état où toutes les activités sont terminées, doit être Faux
 - <> finished;
+\end{verbatim}
+
+\subsection{Invariance des activités}
+
+On souhaite également pouvoir vérifier qu'une fois le processus démarré (\textit{Started}), ses activités seront toujours soit dans l'état :
+\begin{itemize}
+\item non commencée - \textit{Ready}
+\item en cours - \textit{Started}
+\item terminée - \textit{Finished}
+\end{itemize}
+Dans notre exemple, cette propriété se traduit par les requêtes LTL suivantes :
+
+\begin{verbatim}
+[] (exemple_started => (Conception_ready \/ Conception_started \/ Conception_finished));
+[] (exemple_started => (RedactionDoc_ready \/ RedactionDoc_started \/ RedactionDoc_finished));
+[] (exemple_started => (Developpement_ready \/ Developpement_started \/ Developpement_finished));
+[] (exemple_started => (RedactionTests_ready \/ RedactionTests_started \/ RedactionTests_finished));
+\end{verbatim}
+
+\subsection{Irréversibilité des activités terminées}
+
+Enfin, on peut vérifier qu'une activité terminée n'évolue plus du tout : c'est-à-dire qu'une activité ayant atteint l'état \textit{Finished} n'atteindra plus jamais les états \textit{Ready} ou \textit{Started}. Dans notre exemple, cela se traduit par les requêtes suivantes :
+
+\begin{verbatim}
+[] (Conception_finished => - <> (Conception_ready \/ Conception_started));
+[] (RedactionDoc_finished => - <> (RedactionDoc_ready \/ RedactionDoc_started));
+[] (Developpement_finished => - <> (Developpement_ready \/ Developpement_started));
+[] (RedactionTests_finished => - <> (RedactionTests_ready \/ RedactionTests_started));
+\end{verbatim}
 
 \chapter{Partie 2 : Extensions supplémentaires}
 
 \input{partie2}
-\end{document}   
+\end{document}
