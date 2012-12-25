@@ -132,7 +132,7 @@ Dans cet exemple d'exécution, on vérifie que :
 \item si on est dans le sous-état \textit{Interrupted}, les ressources sont libérées et que l'on peut accéder à la transition \textit{Resume} et pas à la transition \textit{Finish}\\
 \end{itemize}
 
-Vérifions ces propriétés, avec une exécution en cinq phases sur une même activité, correspondant aux cinq états suivants :
+On peut vérifier ces propriétés, avec une exécution en cinq phases sur une même activité, correspondant aux cinq états suivants, à l'aide du steppeur de l'outil Tina : 
 \begin{itemize}
 \item \textit{Ready}
 \item \textit{Started} \textit{Running}
@@ -143,7 +143,7 @@ Vérifions ces propriétés, avec une exécution en cinq phases sur une même ac
 
 \subsection{Contraintes LTL}
 
-Vérifier que si le processus est en \textit{Started}, toutes ses activités sont soit en \textit{Ready}, soit en \textit{Started}, soit en \textit{Finished}.
+Afin de montrer que cette extension n'altère en rien les contraintes exiggées dans le document de spécification, on peut exécuter la requête LTL permetant de vérifier que si le processus est en \textit{Started}, alors toutes ses activités sont soit en \textit{Ready}, soit en \textit{Started}, soit en \textit{Finished}.
 
 \section{Ressources alternatives}
 
