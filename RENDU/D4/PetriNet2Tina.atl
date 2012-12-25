@@ -1,0 +1,68 @@
+-- build a Tina net file from a Petri net model
+query PetriNet2Tina = 
+	let repertoire: String = '/home/alex/workspace/BE/' in
+		petrinet!PetriNet.allInstances()
+			->collect(pn | pn.toTina().writeTo(repertoire + pn.name + '.net'));
+
+-- concatenate all the strings of a sequence, adding the before char
+-- before each string and the after char after.
+helper
+def: concatenateStrings(strings: Sequence(String),
+		before: String, after: String): String =
+	strings->iterate(s; acc: String = '' | acc + before + s + after);
+
+-- translate a PetriNet element into the Tina textual syntax
+helper 
+context petrinet!PetriNet
+def: toTina(): String =
+	'net '  + self.name + '\n' + (
+		let nodesStrings: Sequence(String) = self.nodes->collect(p | p.toTina())
+		in
+			thisModule.concatenateStrings(nodesStrings, '', '\n')
+	)
+;
+
+-- translate a place to Tina syntax
+helper
+context petrinet!Place
+def: toTina(): String =
+	'pl ' + self.name + '(' + self.marking.toString() + ')'
+;
+
+-- translate a transition to Tina syntax.
+helper
+context petrinet!Transition
+def: toTina(): String =
+	let inNodesNames: Sequence(String)
+		= self.incomings->collect(arc | arc.asTina(true))
+	in let outNodesNames: Sequence(String)
+		= self.outgoings->collect(arc | arc.asTina(false))
+	in
+		('tr '  + self.name
+		+ ' [' + self.min_time + ',' + self.max_time + ']'
+		+ thisModule.concatenateStrings(inNodesNames, ' ', '')
+		+ ' -> '
+		+ thisModule.concatenateStrings(outNodesNames, ' ', '')).regexReplaceAll('-1]', 'w[')
+;
+		
+-- Translate an Arc to Tina syntax. isSource indicates if it is an
+-- outgoing arc or an incoming one
+helper
+context petrinet!Arc
+def: asTina(isSource: Boolean): String =
+	if isSource = true then
+		self.source.name
+	else
+		self.target.name
+	endif
+	+
+	if self.kind = #normal then
+		'*'
+	else
+		'?'
+	endif
+	+ self.weight.toString()
+;
+-- vi:ts=4 sw=4:
+
+

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:simplepdl="http://simplepdl" xmi:id="_En0D0EMlEeKXAtfKAcsjug" type="SimplePDL" name="exemple.simplepdl_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_ql1L0EMoEeKYfL3rqhwseQ" type="2003" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_qmw_8EMoEeKYfL3rqhwseQ" type="5003"/>
+    <element xmi:type="simplepdl:WorkDefinition" href="exemple.simplepdl#//@processElements.0"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ql1L0UMoEeKYfL3rqhwseQ" x="265" y="55"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_tH11kEMoEeKYfL3rqhwseQ" type="2003" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_tH2coEMoEeKYfL3rqhwseQ" type="5003"/>
+    <element xmi:type="simplepdl:WorkDefinition" href="exemple.simplepdl#//@processElements.1"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tH11kUMoEeKYfL3rqhwseQ" x="15" y="270"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_umryIEMoEeKYfL3rqhwseQ" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_umtAQEMoEeKYfL3rqhwseQ" type="5001"/>
+    <element xmi:type="simplepdl:RessourceDefinition" href="exemple.simplepdl#//@processElements.2"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_umsZMEMoEeKYfL3rqhwseQ" x="510" y="30"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_ZRReUEMpEeKYfL3rqhwseQ" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_ZRSFYEMpEeKYfL3rqhwseQ" type="5001"/>
+    <element xmi:type="simplepdl:RessourceDefinition" href="exemple.simplepdl#//@processElements.5"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZRReUUMpEeKYfL3rqhwseQ" x="580" y="600"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_d5u3MEMpEeKYfL3rqhwseQ" type="2003" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_d5wFUEMpEeKYfL3rqhwseQ" type="5003"/>
+    <element xmi:type="simplepdl:WorkDefinition" href="exemple.simplepdl#//@processElements.7"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_d5u3MUMpEeKYfL3rqhwseQ" x="265" y="268"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_esV_4EMpEeKYfL3rqhwseQ" type="2003" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_esWm8EMpEeKYfL3rqhwseQ" type="5003"/>
+    <element xmi:type="simplepdl:WorkDefinition" href="exemple.simplepdl#//@processElements.8"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_esV_4UMpEeKYfL3rqhwseQ" x="540" y="275"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_so6ocEMpEeKYfL3rqhwseQ" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_so72kEMpEeKYfL3rqhwseQ" type="5001"/>
+    <element xmi:type="simplepdl:RessourceDefinition" href="exemple.simplepdl#//@processElements.12"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_so6ocUMpEeKYfL3rqhwseQ" x="15" y="410"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2b_sEEMpEeKYfL3rqhwseQ" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2cATIEMpEeKYfL3rqhwseQ" type="5001"/>
+    <element xmi:type="simplepdl:RessourceDefinition" href="exemple.simplepdl#//@processElements.15"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2b_sEUMpEeKYfL3rqhwseQ" x="340" y="400"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_-cmFcEMpEeKYfL3rqhwseQ" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_-cmsgEMpEeKYfL3rqhwseQ" type="5001"/>
+    <element xmi:type="simplepdl:RessourceDefinition" href="exemple.simplepdl#//@processElements.18"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-cmFcUMpEeKYfL3rqhwseQ" x="615" y="405"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_En0D0UMlEeKXAtfKAcsjug"/>
+  <element xmi:type="simplepdl:Process" href="exemple.simplepdl#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="__5iaAEMoEeKYfL3rqhwseQ" type="4002" source="_ql1L0EMoEeKYfL3rqhwseQ" target="_tH11kEMoEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="__5iaAUMoEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:WorkSequence" href="exemple.simplepdl#//@processElements.3"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="__5iaAkMoEeKYfL3rqhwseQ" points="[10, 20, -142, -240]$[76, 265, -76, 5]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_G1NysEMpEeKYfL3rqhwseQ" type="4001" source="_ql1L0EMoEeKYfL3rqhwseQ" target="_umryIEMoEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_G1NysUMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:RessourceInstance" href="exemple.simplepdl#//@processElements.4"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_G1NyskMpEeKYfL3rqhwseQ" points="[16, 1, -279, 0]$[268, 2, -27, 1]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_G1opcEMpEeKYfL3rqhwseQ" id="(0.8840579710144928,0.525)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_G1opcUMpEeKYfL3rqhwseQ" id="(0.24324324324324326,0.55)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_aubY0EMpEeKYfL3rqhwseQ" type="4001" source="_ql1L0EMoEeKYfL3rqhwseQ" target="_ZRReUEMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_aubY0UMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:RessourceInstance" href="exemple.simplepdl#//@processElements.6"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aubY0kMpEeKYfL3rqhwseQ" points="[69, 11, -158, -24]$[274, 40, 47, 5]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_hG5WwEMpEeKYfL3rqhwseQ" type="4002" source="_ql1L0EMoEeKYfL3rqhwseQ" target="_tH11kEMoEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_hG5WwUMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:WorkSequence" href="exemple.simplepdl#//@processElements.9"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hG5WwkMpEeKYfL3rqhwseQ" points="[-16, 15, 174, -195]$[-266, 207, -76, -3]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hG_dYEMpEeKYfL3rqhwseQ" id="(0.11594202898550725,0.625)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_jmVNoEMpEeKYfL3rqhwseQ" type="4002" source="_ql1L0EMoEeKYfL3rqhwseQ" target="_d5u3MEMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_jmVNoUMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:WorkSequence" href="exemple.simplepdl#//@processElements.10"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_jmVNokMpEeKYfL3rqhwseQ" points="[4, 20, -30, -205]$[109, 219, 75, -6]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_l--gAEMpEeKYfL3rqhwseQ" type="4002" source="_ql1L0EMoEeKYfL3rqhwseQ" target="_esV_4EMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_l--gAUMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:WorkSequence" href="exemple.simplepdl#//@processElements.11"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_l--gAkMpEeKYfL3rqhwseQ" points="[24, 20, -259, -200]$[206, 218, -77, -2]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_uYRtQEMpEeKYfL3rqhwseQ" type="4001" source="_tH11kEMoEeKYfL3rqhwseQ" target="_so6ocEMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_uYRtQUMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:RessourceInstance" href="exemple.simplepdl#//@processElements.13"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uYRtQkMpEeKYfL3rqhwseQ" points="[-4, 20, 0, -107]$[7, 120, 11, -7]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_uYUJgEMpEeKYfL3rqhwseQ" id="(0.7058823529411765,0.175)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_xwSK4EMpEeKYfL3rqhwseQ" type="4001" source="_tH11kEMoEeKYfL3rqhwseQ" target="_ZRReUEMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_xwSK4UMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:RessourceInstance" href="exemple.simplepdl#//@processElements.14"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xwSK4kMpEeKYfL3rqhwseQ" points="[47, 20, -407, -172]$[434, 189, -20, -3]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xwV1QEMpEeKYfL3rqhwseQ" id="(0.21505376344086022,0.425)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_36UrQEMpEeKYfL3rqhwseQ" type="4001" source="_d5u3MEMpEeKYfL3rqhwseQ" target="_2b_sEEMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_36UrQUMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:RessourceInstance" href="exemple.simplepdl#//@processElements.16"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_36UrQkMpEeKYfL3rqhwseQ" points="[12, 20, -76, -112]$[30, 123, -58, -9]"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_5nafMEMpEeKYfL3rqhwseQ" type="4001" source="_d5u3MEMpEeKYfL3rqhwseQ" target="_ZRReUEMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_5nafMUMpEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:RessourceInstance" href="exemple.simplepdl#//@processElements.17"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5nafMkMpEeKYfL3rqhwseQ" points="[15, 23, -223, -312]$[192, 334, -46, -1]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5neJkEMpEeKYfL3rqhwseQ" id="(0.82,0.425)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_A8hEgEMqEeKYfL3rqhwseQ" type="4001" source="_esV_4EMpEeKYfL3rqhwseQ" target="_-cmFcEMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_A8hEgUMqEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:RessourceInstance" href="exemple.simplepdl#//@processElements.19"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_A8hEgkMqEeKYfL3rqhwseQ" points="[1, 7, -18, -100]$[40, 97, 21, -10]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_A8pnYEMqEeKYfL3rqhwseQ" id="(0.7987012987012987,0.825)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_A8pnYUMqEeKYfL3rqhwseQ" id="(0.7613636363636364,0.25)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_C-Hv4EMqEeKYfL3rqhwseQ" type="4001" source="_esV_4EMpEeKYfL3rqhwseQ" target="_ZRReUEMpEeKYfL3rqhwseQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_C-Hv4UMqEeKYfL3rqhwseQ" fontName="Ubuntu"/>
+    <element xmi:type="simplepdl:RessourceInstance" href="exemple.simplepdl#//@processElements.20"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_C-Hv4kMqEeKYfL3rqhwseQ" points="[3, 21, -54, -305]$[54, 346, -3, 20]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_C-KzMEMqEeKYfL3rqhwseQ" id="(0.18831168831168832,0.475)"/>
+  </edges>
+</notation:Diagram>

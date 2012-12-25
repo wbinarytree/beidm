@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ASCII"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="exemple">
+  <processElements xsi:type="simplepdl:WorkDefinition" name="Conception" min_time="10" max_time="16"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" name="RedactionDoc" min_time="8" max_time="12"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" name="Development" min_time="12" max_time="14"/>
+  <processElements xsi:type="simplepdl:WorkDefinition" name="RedactionTest" min_time="10" max_time="12"/>
+  <processElements xsi:type="simplepdl:WorkSequence">
+    <predecessor href="../exemple.pdl#xtextLink_::0.1.4::1::/5"/>
+    <successor href="../exemple.pdl#xtextLink_::0.1.4::2::/8"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish">
+    <predecessor href="../exemple.pdl#xtextLink_::0.1.5::1::/5"/>
+    <successor href="../exemple.pdl#xtextLink_::0.1.5::2::/8"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToStart">
+    <predecessor href="../exemple.pdl#xtextLink_::0.1.6::1::/5"/>
+    <successor href="../exemple.pdl#xtextLink_::0.1.6::2::/8"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:WorkSequence">
+    <predecessor href="../exemple.pdl#xtextLink_::0.1.7::1::/5"/>
+    <successor href="../exemple.pdl#xtextLink_::0.1.7::2::/8"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:WorkSequence" linkType="finishToFinish">
+    <predecessor href="../exemple.pdl#xtextLink_::0.1.8::1::/5"/>
+    <successor href="../exemple.pdl#xtextLink_::0.1.8::2::/8"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="concepteur" number="3"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="redacteur" number="1"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="developpeur" number="2"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="testeur" number="2"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="machine" number="4"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" instances="2">
+    <type href="../exemple.pdl#xtextLink_::0.1.14::0::/4"/>
+    <activity href="../exemple.pdl#xtextLink_::0.1.14::1::/7"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:RessourceInstance" instances="2">
+    <type href="../exemple.pdl#xtextLink_::0.1.15::0::/4"/>
+    <activity href="../exemple.pdl#xtextLink_::0.1.15::1::/7"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:RessourceInstance" instances="1">
+    <type href="../exemple.pdl#xtextLink_::0.1.16::0::/4"/>
+    <activity href="../exemple.pdl#xtextLink_::0.1.16::1::/7"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:RessourceInstance" instances="1">
+    <type href="../exemple.pdl#xtextLink_::0.1.17::0::/4"/>
+    <activity href="../exemple.pdl#xtextLink_::0.1.17::1::/7"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:RessourceInstance" instances="2">
+    <type href="../exemple.pdl#xtextLink_::0.1.18::0::/4"/>
+    <activity href="../exemple.pdl#xtextLink_::0.1.18::1::/7"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:RessourceInstance" instances="3">
+    <type href="../exemple.pdl#xtextLink_::0.1.19::0::/4"/>
+    <activity href="../exemple.pdl#xtextLink_::0.1.19::1::/7"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:RessourceInstance" instances="1">
+    <type href="../exemple.pdl#xtextLink_::0.1.20::0::/4"/>
+    <activity href="../exemple.pdl#xtextLink_::0.1.20::1::/7"/>
+  </processElements>
+  <processElements xsi:type="simplepdl:RessourceInstance" instances="2">
+    <type href="../exemple.pdl#xtextLink_::0.1.21::0::/4"/>
+    <activity href="../exemple.pdl#xtextLink_::0.1.21::1::/7"/>
+  </processElements>
+</simplepdl:Process>

@@ -1,0 +1,26 @@
+process exemple {
+	min_time 20
+	max_time 50
+	wd Conception min 10 max 16
+	wd RedactionDoc min 8 max 12
+	wd Development min 12 max 14
+	wd RedactionTest min 10 max 12
+	ws s2s from Conception to RedactionDoc
+	ws f2f from Conception to RedactionDoc
+	ws f2s from Conception to Development
+	ws s2s from Conception to RedactionTest
+	ws f2f from Development to RedactionTest
+	rd concepteur number 3
+	rd redacteur number 1
+	rd developpeur number 2
+	rd testeur number 2
+	rd machine number 4
+	ri type concepteur activity Conception instances 2
+	ri type machine activity Conception instances 2
+	ri type redacteur activity RedactionDoc instances 1
+	ri type machine activity RedactionDoc instances 1
+	ri type developpeur activity Development instances 2
+	ri type machine activity Development instances 3
+	ri type testeur activity RedactionTest instances 1
+	ri type machine activity RedactionTest instances 2
+}
