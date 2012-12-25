@@ -218,7 +218,7 @@ Le modèle généré graphiquement peut être également représenté sous forme
 \begin{figure}[!h] 
 \begin{center}
 \includegraphics[width=10cm]{Capture-9.png}
-\caption{Modèle sous forme arborescente généré par l'éditeur graphique} 
+\caption{Modèle SimplePDL sous forme arborescente généré par l'éditeur graphique} 
 \label{img1} 
 \end{center}
 \end{figure} 
@@ -319,7 +319,7 @@ A partir du modèle décrit textuellement, on peut l'exporter vers un format gé
 \begin{figure}[!h] 
 \begin{center}
 \includegraphics[width=10cm]{Capture-12.png}
-\caption{Exemple au format XMI sous forme arborescente} 
+\caption{Exemple de modèle SimplePDL au format XMI sous forme arborescente} 
 \label{img1} 
 \end{center}
 \end{figure} 
@@ -460,7 +460,13 @@ Pour modéliser la gestion du temps dans un réseau de Petri, nous allons devoir
 
 Prenons l'activité \textit{Conception} à laquelle on adjoint un observateur :
 
-TODO : METTRE PHOTO OBSERVATEUR POUR UNE SEULE ACTIVITE ET EXPLIQUER
+\begin{figure}[!h] 
+\begin{center}
+\includegraphics[width=10cm]{Capture-18.png}
+\caption{Observateur sur l'activité Conception} 
+\label{img1} 
+\end{center}
+\end{figure} 
 
 Les observateurs sont donc présents au niveau de chaque activité puisqu'on veut surveiller pour chacune leur temps d'exécution, mais aussi pour le processus tout entier qui possède également des attributs \textit{time\_min} et \textit{time\_max}. Pour observer le processus tout entier, le principe est le même que pour une activité, car à l'instar d'une activité, il possède les places \textit{Ready}, \textit{Started} et \textit{Terminated} (équivalent de \textit{Finished} pour les activités), \\
 
@@ -469,14 +475,14 @@ Dans notre exemple, on obtient le réseau de Petri suivant modélisant la gestio
 \begin{figure}[!h] 
 \begin{center}
 \includegraphics[width=18cm]{Capture-17.png}
-\caption{Modèle SimplePDL conforme à l'exemple du sujet} 
+\caption{Réseau de Petri de l'exemple de processus sous l'outil Tina} 
 \label{img1} 
 \end{center}
 \end{figure} 
 
-Le code à fournir pour mettre en place cet observateur est assez long. Il n'est donc pas cité, mais est présent dans les rendus de ce BE.
-
 \newpage
+
+Le code à fournir pour mettre en place cet observateur est assez long. Il n'est donc pas cité, mais est présent dans les rendus de ce BE.
 
 \section{T6 : Validation de la transformation SimplePDL vers PetriNet}
 
@@ -581,16 +587,16 @@ Pour vérifier la terminaison d'un processus, il s'agit d'exécuter plusieurs re
 Soit l'opérateur finished qui correspond au ET logique entre toutes les places de fin de chaque activité correspondant à leur état \textit{Finished}, on a les propriétés suivantes :\\
 
 \begin{verbatim}
-# Si l'on a fini, alors le réseau est mort, doit être Vrai.
+# Si l'on a fini, alors le réseau est mort, doit renvoyer True.
 [] (finished => dead);
 
-# Il est possible que le réseau soit mort, doit être Vrai.
+# Il est possible que le réseau soit mort, doit renvoyer True.
 [] <> dead;
 
-# Si le réseau est mort, alors toutes les activités sont terminées, doit être Vrai
+# Si le réseau est mort, alors toutes les activités sont terminées, doit renvoyer True.
 [] (dead => finished);
 
-# On atteindra jamais l'état où toutes les activités sont terminées, doit être Faux
+# On atteindra jamais l'état où toutes les activités sont terminées, doit renvoyer False.
 - <> finished;
 \end{verbatim}
 
