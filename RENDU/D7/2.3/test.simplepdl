@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdl="http://simplepdl" name="test">
+  <processElements xsi:type="simplepdl:WorkDefinition" name="RedactionTest" min_time="10" max_time="16" linksToRessources="//@processElements.5 //@processElements.8"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="Machine" number="4"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="Analyste" number="5"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="Testeur" number="2"/>
+  <processElements xsi:type="simplepdl:RessourceDefinition" name="GenerateurTest" number="2"/>
+  <processElements xsi:type="simplepdl:RessourceConfig" name="C1" activity="//@processElements.0" ressources="//@processElements.7 //@processElements.6"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.1" instances="2" config="//@processElements.5"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.3" instances="1" config="//@processElements.5"/>
+  <processElements xsi:type="simplepdl:RessourceConfig" name="C2" activity="//@processElements.0" ressources="//@processElements.9 //@processElements.10 //@processElements.11"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.2" instances="1" config="//@processElements.8"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.4" instances="1" config="//@processElements.8"/>
+  <processElements xsi:type="simplepdl:RessourceInstance" type="//@processElements.1" instances="1" config="//@processElements.8"/>
+</simplepdl:Process>

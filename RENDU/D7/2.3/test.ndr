@@ -1,0 +1,61 @@
+p 435.0 360.0 Testeur 2 n
+p 520.0 355.0 GenerateurTest 2 n
+p 600.0 355.0 Analyste 5 n
+t 650.0 210.0 C2start n 0 w n {} ne
+t 490.0 475.0 C1finished 0 w n
+t 645.0 480.0 C2finished 0 w n
+p 565.0 50.0 RedactionTest_ress 0 n
+t 370.0 540.0 test_terminate se 0 0 n {} ne
+p 220.0 455.0 RedactionTest_started 0 n
+t 220.0 530.0 RedactionTest_finish se 0 w n {} ne
+p 215.0 640.0 RedactionTest_finished 0 n
+p 345.0 650.0 test_finished 0 n
+p 520.0 655.0 test_terminated 0 ne
+p 95.0 310.0 RedactionTest_hasStarted 0 n
+p 225.0 275.0 RedactionTest_ready 0 n
+t 260.0 70.0 test_start ne 0 w n {} ne
+p 140.0 70.0 test_ready 1 n
+p 325.0 160.0 test_started 0 n
+t 215.0 365.0 RedactionTest_start 0 w n
+p 685.0 75.0 p0 0 n
+p 855.0 100.0 p1 0 n
+p 670.0 355.0 Machine 4 n
+t 520.0 180.0 C1start n 0 w n {} ne
+p 375.0 90.0 p2 0 n
+e test_ready test_start 1 n
+e test_start test_started 1 n
+e test_start RedactionTest_ready 1 n
+e test_started test_terminate 1 n
+e test_finished test_terminate 1 n
+e test_terminate test_terminated 1 n
+e RedactionTest_ready RedactionTest_start 1 n
+e RedactionTest_ress RedactionTest_start ?1 n
+e RedactionTest_start RedactionTest_hasStarted 1 n
+e RedactionTest_start RedactionTest_started 1 n
+e RedactionTest_started RedactionTest_finish 1 n
+e RedactionTest_finish test_finished 1 n
+e RedactionTest_finish RedactionTest_finished 1 n
+e Machine C1start 2 n
+e Testeur C1start 1 n
+e C1start RedactionTest_ress 1 n
+e test_terminated C1finished 1 n
+e C1finished Machine 2 n
+e C1finished Testeur 1 n
+e Machine C2start 1 n
+e GenerateurTest C2start 1 n
+e Analyste C2start 1 n
+e C2start RedactionTest_ress 1 n
+e test_terminated C2finished 1 n
+e C2finished Machine 1 n
+e C2finished GenerateurTest 1 n
+e C2finished Analyste 1 n
+e C1start p0 1 n
+e p0 C1finished 1 n
+e p1 C2finished 1 n
+e C2start p1 1 n
+e test_start p2 1 n
+e p2 C1start 1 n
+e p2 C2start 1 n
+h test
+
+

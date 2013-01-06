@@ -1,0 +1,25 @@
+net test
+pl test_ready(1)
+pl test_started(0)
+pl test_ress_l(0)
+pl test_finished(0)
+pl test_terminated(0)
+tr test_start [0,w[ test_ready*1 ->  RedactionTest_ready*1 test_started*1 test_ress_l*1
+tr test_terminate [0,0] test_finished*4 test_started*1 ->  test_terminated*1
+pl RedactionTest_ready(0)
+pl RedactionTest_started(0)
+pl RedactionTest_finished(0)
+pl RedactionTest_hasStarted(0)
+pl RedactionTest_ress(0)
+tr RedactionTest_start [0,w[ RedactionTest_ready*1 RedactionTest_ress?1 ->  RedactionTest_started*1 RedactionTest_hasStarted*1
+tr RedactionTest_finish [0,w[ RedactionTest_started*1 ->  RedactionTest_finished*1 test_finished*1
+pl Machine(4)
+pl Analyste(5)
+pl Testeur(2)
+pl GenerateurTest(2)
+pl C1_used(0)
+tr C1start [0,w[ Testeur*1 Machine*2 test_ress_l*1 ->  RedactionTest_ress*1 C1_used*1
+tr C1finished [0,w[ test_terminated*1 C1_used*1 ->  Testeur*1 Machine*2
+pl C2_used(0)
+tr C2start [0,w[ Analyste*1 GenerateurTest*1 Machine*1 test_ress_l*1 ->  RedactionTest_ress*1 C2_used*1
+tr C2finished [0,w[ test_terminated*1 C2_used*1 ->  Analyste*1 GenerateurTest*1 Machine*1

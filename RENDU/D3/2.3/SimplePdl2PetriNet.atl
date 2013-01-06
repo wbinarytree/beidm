@@ -1,0 +1,310 @@
+-- @path simplepdl=/BE/SimplePDL.ecore
+-- @path petrinet=/BE/PetriNet.ecore
+
+module SimplePDL2PetriNet;
+create OUT : petrinet from IN : simplepdl;
+
+-- Obtenir le processus qui contient ce process element.
+-- Remarque: Ce helper ne serait pas utile si une r�f�rence opposite
+-- avait �t� plac�e entre Process et ProcessElement
+helper context simplepdl!ProcessElement
+def: getProcess(): simplepdl!Process =
+	simplepdl!Process.allInstances()
+		->select(p | p.processElements->includes(self))
+		->asSequence()->first();
+
+-- Traduire un Process en un PetriNet de m�me nom
+rule Process2PetriNet {
+	from p: simplepdl!Process
+	to pn: petrinet!PetriNet (name <- p.name),
+		p_ready: petrinet!Place(
+			name <- p.name + '_ready',
+			marking <- 1,
+			net <- pn),
+		p_started: petrinet!Place(
+			name <- p.name + '_started',
+			marking <- 0,
+			net <- pn),
+		p_ress_l: petrinet!Place(
+			name <- p.name + '_ress_l',
+			marking <- 0,
+			net <- pn),
+		p_finished: petrinet!Place(
+			name <- p.name + '_finished',
+			marking <- 0,
+			net <- pn),
+		p_terminated: petrinet!Place(
+			name <- p.name + '_terminated',
+			marking <- 0,
+			net <- pn),
+		t_start: petrinet!Transition(
+				name <- p.name + '_start',
+				incomings <- a_r2s,
+				outgoings <- p.processElements->select(wd | wd.oclIsTypeOf(simplepdl!WorkDefinition))
+									->collect(wd | thisModule.resolveTemp(wd, 'a_sp'))->append(a_s2s),
+				min_time <- 0,
+				max_time <- -1,
+				net <- pn),
+		t_terminate: petrinet!Transition(
+				name <- p.name + '_terminate',
+				incomings <- a_f2t,
+				outgoings <- a_t2t,
+				min_time <- 0,
+				max_time <- 0,
+				net <- pn),
+		a_r2s: petrinet!Arc(
+				source <- p_ready,
+				target <- t_start,
+				kind <- #normal,
+				weight <- 1,
+				net <- pn),
+		a_f2t: petrinet!Arc(
+				source <- p_finished,
+				target <- t_terminate,
+				kind <- #normal,
+				weight <- 4,
+				net <- pn),
+		a_t2t: petrinet!Arc(
+				source <- t_terminate,
+				target <- p_terminated,
+				kind <- #normal,
+				weight <- 1,
+				net <- pn),
+		a_s2s: petrinet!Arc(
+				source <- t_start,
+				target <- p_started,
+				kind <- #normal,
+				weight <- 1,
+				net <- pn),
+		a_s2rf: petrinet!Arc(
+				source <- t_start,
+				target <- p_ress_l,
+				kind <- #normal,
+				weight <- 1,
+				net <- pn),
+		a_s2t: petrinet!Arc(
+				source <- p_started,
+				target <- t_terminate,
+				kind <- #normal,
+				weight <- 1,
+				net <- pn)
+	
+}
+
+-- Traduire une WorkDefinition en un motif sur le r�seau de Petri
+rule WorkDefinition2PetriNet {
+	from wd: simplepdl!WorkDefinition
+	to
+		-- PLACES d'une WorkDefinition : ready, started, finished, hasStarted
+		p_ready: petrinet!Place(
+						name <- wd.name + '_ready',
+						marking <- 0,
+						net <- wd.getProcess()),
+		p_started: petrinet!Place(
+						name <- wd.name + '_started',
+						marking <- 0,
+						net <- wd.getProcess()),
+		p_finished: petrinet!Place(
+						name <- wd.name + '_finished',
+						marking <- 0,
+						net <- wd.getProcess()),
+		p_hasStarted: petrinet!Place(
+						name <- wd.name + '_hasStarted',
+						marking <- 0,
+						net <- wd.getProcess()),
+						
+		-- PLACES pour les ressources
+		p_allressource: petrinet!Place(
+						name <- wd.name + '_ress',
+						marking <- 0,
+						net <- wd.getProcess()),
+		
+		-- TRANSITIONS d'une WorkDefinition : start, finish
+		t_start: petrinet!Transition(
+				name <- wd.name + '_start',
+				incomings <- a_r2s,
+				outgoings <- a_s2s,
+				min_time <- 0,
+				max_time <- -1,
+				net <- wd.getProcess()),
+		t_finish: petrinet!Transition(
+				name <- wd.name + '_finish',
+				incomings <- a_s2f,
+				outgoings <- a_f2f,
+				min_time <- 0,
+				max_time <- -1,
+				net <- wd.getProcess()),
+	
+		-- ARCS d'une WorkDefinitions : ready2start, start2started, started2finish, finish2finished
+		a_r2s: petrinet!Arc(
+				source <- p_ready,
+				target <- t_start,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_s2s: petrinet!Arc(
+				source <- t_start,
+				target <- p_started,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_s2f: petrinet!Arc(
+				source <- p_started,
+				target <- t_finish,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_f2f: petrinet!Arc(
+				source <- t_finish,
+				target <- p_finished,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+		a_s2h: petrinet!Arc(
+				source <- t_start,
+				target <- p_hasStarted,
+				weight <- 1,
+				kind <- #normal,
+				net <- wd.getProcess()),
+				
+		--ARCS pour les ressources
+		a_res: petrinet!Arc(
+				source <- p_allressource,
+				target <- t_start,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- wd.getProcess()),
+				
+				
+		-- ARCS PROCESS
+		a_sp:	petrinet!Arc(
+					source <- thisModule.resolveTemp(wd.getProcess(), 't_start'),
+					target <- p_ready,
+					kind <- #normal,
+					weight <- 1,
+					net <- wd.getProcess()),
+		a_fp:	petrinet!Arc(
+					source <- t_finish,
+					target <- thisModule.resolveTemp(wd.getProcess(), 'p_finished'),
+					kind <- #normal,
+					weight <- 1,
+					net <- wd.getProcess())
+					
+}
+
+-- Traduire une WorkSequence en un motif sur le r�seau de Petri
+rule WorkSequence2PetriNet {
+	from ws: simplepdl!WorkSequence
+	to
+		
+		-- ARCS d'une WorkSequence : hasStarted / finished ---> t_ws  , t_ws ---> start / finish 
+		a_ws: petrinet!Arc(
+				source <- 
+					if ws.linkType = #startToStart or ws.linkType = #startToFinish then
+						thisModule.resolveTemp(ws.predecessor, 'p_hasStarted')
+					else
+						thisModule.resolveTemp(ws.predecessor, 'p_finished')
+					endif
+					,
+				target <- 
+					if ws.linkType = #startToStart or ws.linkType = #finishToStart then
+						thisModule.resolveTemp(ws.successor, 't_start')
+					else
+						thisModule.resolveTemp(ws.successor, 't_finish')
+					endif
+					,
+				weight <- 1,
+				kind <- #read_arc,
+				net <- ws.getProcess())
+
+}
+
+rule RessourceDefinition2PetriNet {
+	from rd: simplepdl!RessourceDefinition
+	to
+		p_ressource: petrinet!Place(
+						name <- rd.name,
+						marking <- rd.number,
+						net <- rd.getProcess())
+}
+
+
+rule RessourceConfig2PetriNet {
+	from rc: simplepdl!RessourceConfig
+	to
+		p_ress_used: petrinet!Place(
+					 name <- rc.name + '_used',
+					 marking <- 0,
+				     net <- rc.getProcess()),
+					 
+		t_ressf: petrinet!Transition(
+				 name <- rc.name + 'start',
+				 incomings <- rc.ressources->collect(rct | thisModule.resolveTemp(rct, 'a_ressource_start')),
+				 incomings <- a_r4,
+				 outgoings <- a_r1,
+				 outgoings <- a_r5,
+				 min_time <- 0,
+				 max_time <- -1,
+				 net <- rc.getProcess()),
+				 
+		t_ressf2: petrinet!Transition(
+				 name <- rc.name + 'finished',
+				 incomings <- a_r2,
+				 outgoings <- rc.ressources->collect(rct | thisModule.resolveTemp(rct, 'a_ressource_fin')),
+				 min_time <- 0,
+				 max_time <- -1,
+				 net <- rc.getProcess()),
+				 
+ 		a_r1:  petrinet!Arc(
+				source <- t_ressf,
+				target <- thisModule.resolveTemp(rc.activity, 'p_allressource'),
+				weight <- 1,
+				kind <- #normal,
+				net <- rc.getProcess()),
+				
+ 		a_r2:  petrinet!Arc(
+				source <- thisModule.resolveTemp(rc.getProcess(), 'p_terminated'),
+				target <- t_ressf2,
+				weight <- 1,
+				kind <- #normal,
+				net <- rc.getProcess()),
+				
+		a_r4:  petrinet!Arc(
+				source <- thisModule.resolveTemp(rc.getProcess(), 'p_ress_l'),
+				target <- t_ressf,
+				weight <- 1,
+				kind <- #normal,
+				net <- rc.getProcess()),
+		a_r5:  petrinet!Arc(
+				source <- t_ressf,
+				target <- p_ress_used,
+				weight <- 1,
+				kind <- #normal,
+				net <- rc.getProcess()),
+		a_r6:  petrinet!Arc(
+				source <- p_ress_used,
+				target <- t_ressf2,
+				weight <- 1,
+				kind <- #normal,
+				net <- rc.getProcess())
+							
+}
+
+
+rule RessourceInstance2PetriNet {
+	from ri: simplepdl!RessourceInstance
+	to
+		a_ressource_start: petrinet!Arc(
+						source <- thisModule.resolveTemp(ri.type, 'p_ressource'),
+						target <- thisModule.resolveTemp(ri.config, 't_ressf'),
+						weight <- ri.instances,
+						kind <- #normal,
+						net <- ri.getProcess()),
+		a_ressource_fin: petrinet!Arc(
+						source <- thisModule.resolveTemp(ri.config, 't_ressf2'),
+						target <- thisModule.resolveTemp(ri.type, 'p_ressource'),
+						weight <- ri.instances,
+						kind <- #normal,
+						net <- ri.getProcess())
+}
+
